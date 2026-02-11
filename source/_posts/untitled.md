@@ -1,8 +1,10 @@
 ---
-title: {{filename}}
-date: 2026-02-11
+title: {{ filename }}
+date: {{ date }}
 ---
 
-# 这是今晚最后一篇
+# 这是真今晚最后一篇
 
-正文ing
+<br />
+
+这里是正文
