@@ -1,10 +1,8 @@
 ---
-title: fifth
+title: {{filename}}
 date: 2026-02-11
-tags:
-
 ---
 
-### 这是第五篇
+第七篇的正文
 
-正文内容
+lalalalal
