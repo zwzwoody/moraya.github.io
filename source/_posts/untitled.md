@@ -1,7 +1,8 @@
 ---
-title: 第六篇
+title: {{filename}}
 date: 2026-02-11
-tags:
 ---
 
-这是正文正文
+第七篇的正文
+
+lalalalal
