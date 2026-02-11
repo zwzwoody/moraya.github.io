@@ -8,12 +8,12 @@ subtitle: ''
 description: '事无优劣，思想使然'
 keywords:
 author: AlanW
-language: en
-timezone: ''
+language: zh-CN
+timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://github.com/zwzwoody/moraya.github.io/
+url: https://zwzwoody.github.io/moraya.github.io/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
