@@ -1,8 +1,12 @@
 ---
-title: {{filename}}
+title: 好你个moraya
 date: 2026-02-11
+tags:
+
+description: 
+cover: 
 ---
 
-第七篇的正文
+# 好你个moraya
 
-lalalalal
+fadfasdfasfadfadsfa
