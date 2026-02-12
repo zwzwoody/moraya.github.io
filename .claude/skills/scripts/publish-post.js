@@ -2,6 +2,7 @@
  * Hexo 博客文章发布脚本
  *
  * 功能：
+ * 0. 备份原文章到 page-tmp 文件夹
  * 1. 创建与文章同名的资源文件夹
  * 2. 将文章中的图片移动到该文件夹
  * 3. 更新图片路径为 Hexo 格式
@@ -10,6 +11,60 @@
 
 const fs = require('fs');
 const path = require('path');
+
+// 获取当前时间（用于备份文件夹命名）
+function getTimestamp() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+  return `${year}${month}${day}-${hours}${minutes}${seconds}`;
+}
+
+// 备份文件到 page-tmp 文件夹
+function backupFile(filePath, backupDir) {
+  if (!fs.existsSync(filePath)) return null;
+
+  const fileName = path.basename(filePath);
+  const destPath = path.join(backupDir, fileName);
+  fs.copyFileSync(filePath, destPath);
+  return destPath;
+}
+
+// 备份整个目录到 page-tmp 文件夹
+function backupEntireDir(srcDir, backupRootDir) {
+  if (!fs.existsSync(srcDir)) return null;
+
+  const dirName = path.basename(srcDir);
+  const destDir = path.join(backupRootDir, dirName);
+
+  if (!fs.existsSync(destDir)) {
+    fs.mkdirSync(destDir, { recursive: true });
+  }
+
+  // 递归复制目录内容
+  function copyDir(src, dst) {
+    if (!fs.existsSync(dst)) {
+      fs.mkdirSync(dst, { recursive: true });
+    }
+    const items = fs.readdirSync(src);
+    for (const item of items) {
+      const srcItem = path.join(src, item);
+      const dstItem = path.join(dst, item);
+      if (fs.statSync(srcItem).isDirectory()) {
+        copyDir(srcItem, dstItem);
+      } else {
+        fs.copyFileSync(srcItem, dstItem);
+      }
+    }
+  }
+
+  copyDir(srcDir, destDir);
+  return destDir;
+}
 
 // 获取当前时间（Hexo 格式：2026-02-12 16:30:00）
 function getCurrentDate() {
@@ -53,8 +108,32 @@ const postName = path.basename(fullPath, '.md');
 const assetDirName = postName; // Hexo 格式：与文章同名（不带 .md）
 const assetDirPath = path.join(postDir, assetDirName);
 
-console.log(`处理文章: ${fullPath}`);
-console.log(`资源目录: ${assetDirPath}`);
+// ========== 备份步骤 ==========
+const timestamp = getTimestamp();
+const backupBaseDir = path.join(process.cwd(), 'page-tmp');
+const backupDir = path.join(backupBaseDir, `${postName}-${timestamp}`);
+
+if (!fs.existsSync(backupBaseDir)) {
+  fs.mkdirSync(backupBaseDir, { recursive: true });
+}
+if (!fs.existsSync(backupDir)) {
+  fs.mkdirSync(backupDir, { recursive: true });
+}
+
+console.log(`\n📁 开始备份到: page-tmp/${path.basename(backupDir)}`);
+
+// 备份原文章
+const backupMd = backupFile(fullPath, backupDir);
+console.log(`✓ 备份文章: ${path.basename(backupMd)}`);
+
+// 备份资源文件夹（如果存在）
+if (fs.existsSync(assetDirPath)) {
+  const backupAssets = backupEntireDir(assetDirPath, backupDir);
+  console.log(`✓ 备份资源目录: ${assetDirName}/`);
+}
+console.log(`\n`);
+
+// ========== 结束备份步骤 ==========
 
 // 创建资源目录
 if (!fs.existsSync(assetDirPath)) {
@@ -198,3 +277,4 @@ console.log('\n✅ 处理完成！');
 console.log(`文章: ${fullPath}`);
 console.log(`资源目录: ${assetDirPath}`);
 console.log(`图片数量: ${processedImages.size}`);
+console.log(`\n📁 备份位置: page-tmp/${path.basename(backupDir)}/`);

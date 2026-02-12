@@ -7,7 +7,9 @@
       "Bash(node:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(claude doctor:*)"
+      "Bash(claude doctor:*)",
+      "Bash(reg query:*)",
+      "Bash(findstr:*)"
     ]
   }
 }
