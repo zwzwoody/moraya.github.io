@@ -43,13 +43,16 @@ description: 发布 Hexo 博客文章。用于整理图片资源、添加 front 
     - Hexo
   ```
 
-### 第四步：执行处理脚本
+### 第四步：备份原文件
+
+调用 backup-post skill 备份原文件到 `pages-tmp/<文件名>/`：
+- 备份 .md 文件
+- 解析并备份 md 文件中引用的图片（支持 Markdown、HTML、asset_img 格式）
+- 备份同名资源文件夹（如果存在）
+
+### 第五步：执行处理脚本
 
 运行 `node .claude/skills/scripts/publish-post.js`，自动：
-
-1. **备份原文件**：
-   - 备份到 `page-tmp/<文章名>-<时间戳>/`
-   - 包含 .md 文件和资源文件夹
 
 2. **创建资源文件夹**：
    - 在 `source/_posts/` 下创建与文章同名的文件夹
@@ -66,13 +69,13 @@ description: 发布 Hexo 博客文章。用于整理图片资源、添加 front 
    - 添加 `title`、`date`、`tags` 字段
    - 如果已存在则更新
 
-### 第五步：确认推送 GitHub
+### 第六步：确认推送 GitHub
 
 询问用户是否推送到 GitHub：
 - 输入 `y` 或 `Y`：执行推送
 - 输入 `n` 或其他：跳过推送
 
-### 第六步：执行 Git 操作
+### 第七步：执行 Git 操作
 
 当用户确认后执行：
 ```bash
@@ -92,8 +95,9 @@ git push
     ↓
 标签（可选）
     ↓
+调用 backup-post 备份原文件
+    ↓
 执行 publish-post.js 脚本
-    ├── 备份到 page-tmp/
     ├── 创建资源文件夹
     ├── 处理图片（Markdown + HTML）
     ├── 更新为 asset_img 格式
@@ -136,18 +140,19 @@ git push
 
 ## 备份说明
 
-处理前会自动备份到 `page-tmp/` 目录：
+处理前会自动调用 [backup-post](../backup-post/SKILL.md) 备份到 `pages-tmp/` 目录：
 
 ```
-page-tmp/
-└── my-post-20260213-120000/
-    ├── my-post.md          # 原始文章
-    └── images/             # 原始资源文件夹（如果有）
-        ├── screenshot.png
-        └── diagram.jpg
+pages-tmp/
+└── my-post/                  # 与博客文件名一致
+    ├── my-post.md           # 原始文章
+    ├── image1.png           # 引用的图片
+    └── my-post/             # 资源文件夹（如果有）
+        ├── image2.png
+        └── image3.jpg
 ```
 
-如需恢复，从 `page-tmp/` 复制文件回 `source/_posts/` 即可。
+如需恢复，从 `pages-tmp/` 复制文件回 `source/_posts/` 即可。
 
 ## 文件结构
 
@@ -164,7 +169,7 @@ page-tmp/
 1. **输入文章路径前确认文件存在**，脚本会验证但提前检查更友好
 2. **标签用逗号分隔**，会自动去除空格
 3. **空标签可以直接回车**
-4. **处理后检查效果**，不满意可从 `page-tmp/` 恢复
+4. **处理后检查效果**，不满意可从 `pages-tmp/` 恢复
 
 ## 故障排除
 
