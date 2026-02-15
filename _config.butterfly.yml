@@ -283,7 +283,7 @@ aside:
     tag: true
     category: true
   card_author:
-    enable: false
+    enable: true
     description:
     button:
       enable: true
