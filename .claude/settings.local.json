@@ -9,7 +9,10 @@
       "Bash(git commit:*)",
       "Bash(claude doctor:*)",
       "Bash(reg query:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(powershell:*)",
+      "Bash(cmd:*)",
+      "WebFetch(domain:github.com)"
     ]
   }
 }
