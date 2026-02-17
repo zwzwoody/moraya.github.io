@@ -16,7 +16,9 @@
       "Bash(hexo clean:*)",
       "Bash(hexo generate:*)",
       "Bash(hexo server:*)",
-      "Bash(timeout:*)"
+      "Bash(timeout:*)",
+      "Bash(npx hexo:*)",
+      "Bash(npx hexo generate)"
     ]
   }
 }
