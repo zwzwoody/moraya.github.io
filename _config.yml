@@ -103,4 +103,4 @@ theme: butterfly
 deploy:
   type: git
   repo: https://github.com/zwzwoody/moraya.github.io.git
-  branch: master
+  branch: main
