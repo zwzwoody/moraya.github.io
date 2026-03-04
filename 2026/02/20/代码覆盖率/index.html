@@ -1,0 +1,271 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>代码覆盖率总是搞不懂？5 分钟快速上手 + 常见问题详解 | AlanW Mountain</title><meta name="author" content="AlanW"><meta name="copyright" content="AlanW"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="Streamlit 项目实战案例  快速入门代码覆盖率工具用起来其实很简单。首先安装： 1pip install coverage  在测试环境中启动项目时，只需要加上 coverage run 命令就行： 1coverage run --source&#x3D;. -m streamlit run streamlit_app.py  这里有两个关键参数：  --source&#x3D;.：只统计当前目录下的代码覆">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代码覆盖率总是搞不懂？5 分钟快速上手 + 常见问题详解">
+<meta property="og:url" content="https://zwzwoody.github.io/moraya.github.io/2026/02/20/%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87/index.html">
+<meta property="og:site_name" content="AlanW Mountain">
+<meta property="og:description" content="Streamlit 项目实战案例  快速入门代码覆盖率工具用起来其实很简单。首先安装： 1pip install coverage  在测试环境中启动项目时，只需要加上 coverage run 命令就行： 1coverage run --source&#x3D;. -m streamlit run streamlit_app.py  这里有两个关键参数：  --source&#x3D;.：只统计当前目录下的代码覆">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zwzwoody.github.io/moraya.github.io/img/avatar.jpg">
+<meta property="article:published_time" content="2026-02-20T15:04:38.000Z">
+<meta property="article:modified_time" content="2026-02-20T15:20:35.859Z">
+<meta property="article:author" content="AlanW">
+<meta property="article:tag" content="Coverage">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="代码覆盖率">
+<meta property="article:tag" content="测试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zwzwoody.github.io/moraya.github.io/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "代码覆盖率总是搞不懂？5 分钟快速上手 + 常见问题详解",
+  "url": "https://zwzwoody.github.io/moraya.github.io/2026/02/20/%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87/",
+  "image": "https://zwzwoody.github.io/moraya.github.io/img/avatar.jpg",
+  "datePublished": "2026-02-20T15:04:38.000Z",
+  "dateModified": "2026-02-20T15:20:35.859Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "AlanW",
+      "url": "https://zwzwoody.github.io/moraya.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/moraya.github.io/img/favicon.ico"><link rel="canonical" href="https://zwzwoody.github.io/moraya.github.io/2026/02/20/%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/moraya.github.io/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/moraya.github.io/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '代码覆盖率总是搞不懂？5 分钟快速上手 + 常见问题详解',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/moraya.github.io/"><span class="site-name">AlanW Mountain</span></a><a class="nav-page-title" href="/moraya.github.io/"><span class="site-name">代码覆盖率总是搞不懂？5 分钟快速上手 + 常见问题详解</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">代码覆盖率总是搞不懂？5 分钟快速上手 + 常见问题详解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-02-20T15:04:38.000Z" title="发表于 2026-02-20 23:04:38">2026-02-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-02-20T15:20:35.859Z" title="更新于 2026-02-20 23:20:35">2026-02-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><blockquote>
+<p>Streamlit 项目实战案例</p>
+</blockquote>
+<h1 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h1><p>代码覆盖率工具用起来其实很简单。首先安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install coverage</span><br></pre></td></tr></table></figure>
+
+<p>在<strong>测试环境</strong>中启动项目时，只需要加上 <code>coverage run</code> 命令就行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">coverage run --<span class="built_in">source</span>=. -m streamlit run streamlit_app.py</span><br></pre></td></tr></table></figure>
+
+<p>这里有两个关键参数：</p>
+<ul>
+<li><code>--source=.</code>：只统计当前目录下的代码覆盖率，其他目录的文件不计入</li>
+<li><code>-m</code>：告诉 Python 把后面的内容当作模块来运行</li>
+</ul>
+<p>接下来，在 Streamlit 界面里跑一跑你的功能（手动点一点或者上自动化测试都行），测试完成后生成报告：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">coverage report -m  <span class="comment"># 在终端查看行覆盖率</span></span><br></pre></td></tr></table></figure>
+
+<p>想要更直观的报告？生成 HTML 版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">coverage html  <span class="comment"># 生成网页版报告，浏览器打开看</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="进阶技巧"><a href="#进阶技巧" class="headerlink" title="进阶技巧"></a>进阶技巧</h1><h2 id="追加模式：不用重复执行"><a href="#追加模式：不用重复执行" class="headerlink" title="追加模式：不用重复执行"></a>追加模式：不用重复执行</h2><p>新增了测试用例？不用把之前的用例重新跑一遍。启动项目时加上 <code>--append</code> 参数，coverage 会自动追加新的覆盖率数据：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">coverage run --append --<span class="built_in">source</span>=. -m streamlit run streamlit_app.py</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置文件-coveragerc：更多自定义选项"><a href="#配置文件-coveragerc：更多自定义选项" class="headerlink" title="配置文件 .coveragerc：更多自定义选项"></a>配置文件 .coveragerc：更多自定义选项</h2><p>想要更精细地控制覆盖率统计？在项目根目录创建 <code>.coveragerc</code> 文件，可以配置：</p>
+<ul>
+<li>是否统计分支覆盖率</li>
+<li>开启并行模式（多进程测试必备）</li>
+<li>忽略特定的文件、函数或代码行</li>
+<li>选择报告输出格式</li>
+</ul>
+<h2 id="数据展示：一目了然"><a href="#数据展示：一目了然" class="headerlink" title="数据展示：一目了然"></a>数据展示：一目了然</h2><p>报告里会列出每个文件、类、函数的行覆盖率详情：</p>
+<ul>
+<li><strong>总览页面</strong>：快速了解整体覆盖情况</li>
+</ul>
+<img src="/moraya.github.io/2026/02/20/%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87/image_1.png" class="">
+
+<ul>
+<li><strong>详细页面</strong>：逐行查看哪些代码被测试覆盖到了</li>
+</ul>
+<img src="/moraya.github.io/2026/02/20/%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87/image_2.png" class="">
+
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><h2 id="1-覆盖率有哪些类型？"><a href="#1-覆盖率有哪些类型？" class="headerlink" title="1. 覆盖率有哪些类型？"></a>1. 覆盖率有哪些类型？</h2><aside>
+
+<ul>
+<li><strong>行覆盖率</strong>：代码行被执行的百分比</li>
+<li><strong>分支覆盖率</strong>：条件分支（if&#x2F;else）被覆盖的百分比</li>
+<li><strong>条件覆盖率</strong>：复杂条件表达式中每个子条件都被测试到的百分比</li>
+</ul>
+</aside>
+
+<h2 id="2-覆盖率多少才合适？"><a href="#2-覆盖率多少才合适？" class="headerlink" title="2. 覆盖率多少才合适？"></a>2. 覆盖率多少才合适？</h2><aside>
+
+<p>没有放之四海而皆准的标准，得看你的行业、业务和技术栈。</p>
+<p>一般来说：</p>
+<ul>
+<li><strong>核心业务代码</strong>：行覆盖率 &gt; 90%，分支覆盖率 &gt; 80%</li>
+<li><strong>一般业务代码</strong>：行覆盖率 70% 左右就差不多了</li>
+</ul>
+<p>记住，覆盖率是参考指标，不是 KPI。</p>
+</aside>
+
+<h2 id="3-覆盖率-100-就等于代码没问题？"><a href="#3-覆盖率-100-就等于代码没问题？" class="headerlink" title="3. 覆盖率 100% 就等于代码没问题？"></a>3. 覆盖率 100% 就等于代码没问题？</h2><aside>
+
+<p><strong>当然不是！</strong> 覆盖率 100% 只能说明代码被执行过，但：</p>
+<ul>
+<li>业务逻辑可能还是有 bug</li>
+<li>边界条件可能没测全</li>
+<li>性能问题、安全隐患照样可能存在</li>
+</ul>
+<p>覆盖率是”必要不充分条件”——高覆盖率不一定没 bug，但低覆盖率一定有风险。</p>
+</aside>
+
+<h2 id="4-哪些代码不该计入覆盖率？"><a href="#4-哪些代码不该计入覆盖率？" class="headerlink" title="4. 哪些代码不该计入覆盖率？"></a>4. 哪些代码不该计入覆盖率？</h2><aside>
+
+<p>以下代码可以排除在外：</p>
+<ul>
+<li>测试代码本身（测试代码不需要被测试）</li>
+<li>自动生成的代码（比如 protobuf 生成的类）</li>
+<li>纯配置类（没有业务逻辑）</li>
+<li>调试&#x2F;开发专用的工具代码</li>
+</ul>
+<p>在 <code>.coveragerc</code> 里配置 <code>omit</code> 参数就能忽略它们。</p>
+</aside>
+
+<h2 id="5-怎么提高覆盖率？"><a href="#5-怎么提高覆盖率？" class="headerlink" title="5. 怎么提高覆盖率？"></a>5. 怎么提高覆盖率？</h2><aside>
+
+<p>两个实用方法：</p>
+<ul>
+<li><strong>测试驱动开发（TDD）</strong>：先写测试，再写实现，覆盖率自然高</li>
+<li><strong>补充边界测试</strong>：专门测试极端情况、异常输入</li>
+</ul>
+</aside>
+
+<h2 id="6-多进程测试怎么收集覆盖率？"><a href="#6-多进程测试怎么收集覆盖率？" class="headerlink" title="6. 多进程测试怎么收集覆盖率？"></a>6. 多进程测试怎么收集覆盖率？</h2><aside>
+💡
+
+<p><strong>场景</strong>：Jenkins 同时开启多个进程跑自动化测试</p>
+<p><strong>问题</strong>：子进程的覆盖率数据不会自动合并</p>
+<p><strong>解决方案</strong>：</p>
+<ol>
+<li>在 <code>.coveragerc</code> 中开启 <code>parallel = True</code></li>
+<li>测试完成后，用 <code>coverage combine</code> 合并所有进程的数据</li>
+<li>最后生成报告</li>
+</ol>
+<p>这样就能拿到完整的覆盖率统计了。</p>
+</aside>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://zwzwoody.github.io/moraya.github.io">AlanW</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://zwzwoody.github.io/moraya.github.io/2026/02/20/%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87/">https://zwzwoody.github.io/moraya.github.io/2026/02/20/%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://zwzwoody.github.io/moraya.github.io" target="_blank">AlanW Mountain</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/moraya.github.io/tags/%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87/">代码覆盖率</a><a class="post-meta__tags" href="/moraya.github.io/tags/%E6%B5%8B%E8%AF%95/">测试</a><a class="post-meta__tags" href="/moraya.github.io/tags/Python/">Python</a><a class="post-meta__tags" href="/moraya.github.io/tags/Coverage/">Coverage</a></div><div class="post-share"><div class="social-share" data-image="/moraya.github.io/img/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/moraya.github.io/2026/02/17/midscene%E5%AE%9E%E6%88%98/" title="Midscene 实战：当 AI 遇上自动化测试"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Midscene 实战：当 AI 遇上自动化测试</div></div><div class="info-2"><div class="info-item-1">写在前面作为一名测试工程师，你是否也经历过这样的痛苦：  页面元素改了个 class 名，测试脚本全线崩溃 写了半天的 XPath 选择器，运行时却找不到元素  如果这些场景让你感同身受，那么今天要介绍的 Midscene 可能会让你眼前一亮——它是一个 AI 驱动的 Web 自动化测试框架，能够用自然语言来操作浏览器，告别繁琐的选择器维护。 什么是 Midscene？Midscene是字节跳动开源的基于AI的UI自动化框架，简单来说，Midscene 是一个让 AI 帮你”看”网页并执行操作的测试框架。传统的自动化测试需要精确定位元素（比如 //div[@class=&quot;submit-btn&quot;]），而 Midscene 只需要告诉它”点击提交按钮”，AI 就能理解并执行。 核心优势 自然语言驱动：用中文描述操作意图，AI 自动理解执行 自动失败恢复：Selenium 测试失败时，AI 自动接手重试 无选择器维护：不需要写 XPath、CSS 选择器，页面改版影响小 与现有框架兼容：可以在现有 Selenium + Pytest 基础上增强  项目架构一览先来看...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/moraya.github.io/2026/02/16/%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E7%BB%93%E5%90%88AI/" title="测试报告智能化实践：基于AI的日志分析与问题排查"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-16</div><div class="info-item-2">测试报告智能化实践：基于AI的日志分析与问题排查</div></div><div class="info-2"><div class="info-item-1">1. 背景：做测试的同学应该有体会：Allure 测试报告里，一旦用例执行失败，那一堆日志真是看得人眼花缭乱。排查问题的时候，得在一大堆信息里反复翻找，效率特别低。 有没有办法让这个过程更省力？把问题排查和优化建议交给 AI 来做就是个不错的选择。   2. 目标： 降低日志排查成本：从 “人工在一堆杂乱的日志里大海捞针” 变成”AI 自动提取关键错误信息 + 定位核心问题”，省时又省力 提供可落地的优化方向：AI 会根据执行过程中的信息，给出具体的改进建议  3. 实现方案和效果：把用例 执行日志、错误信息、失败截图、失败重启的midscene自然语言描述通通丢给ai去分析并总结 ⚠️ 小提示：失败截图需要先转成 Base64 编码再喂给大模型，token 消耗会比较大，记得控制成本。  用例通过时效果： 用例失败时效果：  4. 资源支持多模态大模型api，doubao-seed-1-8-251228 </div></div></div></a><a class="pagination-related" href="/moraya.github.io/2026/02/15/%E5%AE%9E%E4%B9%A0%E5%86%85%E5%AE%B9%E6%95%B4%E7%90%86/" title="实习日志：从功能测试到AI辅助测试"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-15</div><div class="info-item-2">实习日志：从功能测试到AI辅助测试</div></div><div class="info-2"><div class="info-item-1">1. 业务体验 直播功能、直播带货、营销互动、等级会员、积分商城等现网环境的功能体验 发现bug后，针对问题找对应的产品、前端、后端、测试，并在coding平台提交bug单  2. 参与小车流程 根据需求文档，使用Xmind工具设计测试点 参与准现网环境的验证工作，提供测试点，验证没问题则发布全网 担任小车司机一周，参与小车的评审并分配测试资源  3. 参与独立车项目 优惠券气质换新、IM在线客服、全域营销  需求评审、技术评审、编写用例、测试用例评审、內灰&#x2F;外灰&#x2F;现网验证、产品体验会 内&#x2F;外灰过程中大量的 发现bug、初步分析bug、对需求、拉产品&#x2F;开发商量 4. UI自动化 积分商城、等级会员、积分商城等功能模块的UI自动化覆盖 UI自动化测试报告结合AI分析 UI自动化测试失败二次重启使用midscene，并搭建midscene调试工具  5. 压测凌晨简单参与、观察压测过程 工具：Jmeter、普罗米修斯、Grafana 重点关注mysql、redis、kafka的服务的cpu、内存、错误率、运行时间 6. AI实践 使用AI ID...</div></div></div></a><a class="pagination-related" href="/moraya.github.io/2026/02/17/streamlit%E5%AE%9E%E6%88%98/" title="Streamlit 实战：用 Python 构建 AI 驱动的 UI 自动化测试平台"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-17</div><div class="info-item-2">Streamlit 实战：用 Python 构建 AI 驱动的 UI 自动化测试平台</div></div><div class="info-2"><div class="info-item-1">这篇文章会带你完整走一遍：如何用 Streamlit 搭建一个 AI 驱动的 UI 自动化测试平台。过程中我会分享一些实战踩坑经验，帮你少走弯路。 效果如下：      目录 先说说我们要做什么 项目结构：为什么这么组织 核心流程：页面是怎么跑起来的 逐个模块拆解 入口文件：定好规矩再开工 状态管理：Streamlit 的灵魂 侧边栏：配置就该放边上 动态表单：最坑也最有价值 结果面板：让执行状态一目了然 配置管理：数据总要存起来 主页面：把积木拼起来   踩坑记录与最佳实践   1. 先说说我们要做什么这是一个 Midscene UI 自动化测试平台，核心能力是用自然语言驱动浏览器执行测试。比如你写一句”点击登录按钮，输入用户名和密码”，AI 就会自动理解并执行。 为了让测试人员用起来更方便，我们用 Streamlit 做了个可视化界面，主要实现这些功能：  可视化配置 AI 模型参数（不用改配置文件了） 用网页表单编写测试用例（不用写代码了） 一键执行、实时查看结果（不用切终端了） 多用例管理、分页展示（清爽不乱）  这些功能点看起来简单，但背后涉及 Streamlit 的几...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/moraya.github.io/img/avatar.jpg" onerror="this.onerror=null;this.src='/moraya.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">AlanW</div><div class="author-info-description">事无优劣，思想使然</div><div class="site-data"><a href="/moraya.github.io/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/moraya.github.io/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/moraya.github.io/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zwzwoody"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcome to my mountain...</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">快速入门</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6%E6%8A%80%E5%B7%A7"><span class="toc-number">2.</span> <span class="toc-text">进阶技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%BD%E5%8A%A0%E6%A8%A1%E5%BC%8F%EF%BC%9A%E4%B8%8D%E7%94%A8%E9%87%8D%E5%A4%8D%E6%89%A7%E8%A1%8C"><span class="toc-number">2.1.</span> <span class="toc-text">追加模式：不用重复执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-coveragerc%EF%BC%9A%E6%9B%B4%E5%A4%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E9%80%89%E9%A1%B9"><span class="toc-number">2.2.</span> <span class="toc-text">配置文件 .coveragerc：更多自定义选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA%EF%BC%9A%E4%B8%80%E7%9B%AE%E4%BA%86%E7%84%B6"><span class="toc-number">2.3.</span> <span class="toc-text">数据展示：一目了然</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%A6%86%E7%9B%96%E7%8E%87%E6%9C%89%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="toc-number">3.1.</span> <span class="toc-text">1. 覆盖率有哪些类型？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%A6%86%E7%9B%96%E7%8E%87%E5%A4%9A%E5%B0%91%E6%89%8D%E5%90%88%E9%80%82%EF%BC%9F"><span class="toc-number">3.2.</span> <span class="toc-text">2. 覆盖率多少才合适？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%A6%86%E7%9B%96%E7%8E%87-100-%E5%B0%B1%E7%AD%89%E4%BA%8E%E4%BB%A3%E7%A0%81%E6%B2%A1%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">3.3.</span> <span class="toc-text">3. 覆盖率 100% 就等于代码没问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%93%AA%E4%BA%9B%E4%BB%A3%E7%A0%81%E4%B8%8D%E8%AF%A5%E8%AE%A1%E5%85%A5%E8%A6%86%E7%9B%96%E7%8E%87%EF%BC%9F"><span class="toc-number">3.4.</span> <span class="toc-text">4. 哪些代码不该计入覆盖率？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%80%8E%E4%B9%88%E6%8F%90%E9%AB%98%E8%A6%86%E7%9B%96%E7%8E%87%EF%BC%9F"><span class="toc-number">3.5.</span> <span class="toc-text">5. 怎么提高覆盖率？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%B5%8B%E8%AF%95%E6%80%8E%E4%B9%88%E6%94%B6%E9%9B%86%E8%A6%86%E7%9B%96%E7%8E%87%EF%BC%9F"><span class="toc-number">3.6.</span> <span class="toc-text">6. 多进程测试怎么收集覆盖率？</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/moraya.github.io/2026/02/20/%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87/" title="代码覆盖率总是搞不懂？5 分钟快速上手 + 常见问题详解">代码覆盖率总是搞不懂？5 分钟快速上手 + 常见问题详解</a><time datetime="2026-02-20T15:04:38.000Z" title="发表于 2026-02-20 23:04:38">2026-02-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/moraya.github.io/2026/02/17/midscene%E5%AE%9E%E6%88%98/" title="Midscene 实战：当 AI 遇上自动化测试">Midscene 实战：当 AI 遇上自动化测试</a><time datetime="2026-02-17T09:13:03.000Z" title="发表于 2026-02-17 17:13:03">2026-02-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/moraya.github.io/2026/02/17/streamlit%E5%AE%9E%E6%88%98/" title="Streamlit 实战：用 Python 构建 AI 驱动的 UI 自动化测试平台">Streamlit 实战：用 Python 构建 AI 驱动的 UI 自动化测试平台</a><time datetime="2026-02-17T05:53:51.000Z" title="发表于 2026-02-17 13:53:51">2026-02-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/moraya.github.io/2026/02/16/%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E7%BB%93%E5%90%88AI/" title="测试报告智能化实践：基于AI的日志分析与问题排查">测试报告智能化实践：基于AI的日志分析与问题排查</a><time datetime="2026-02-15T16:26:20.000Z" title="发表于 2026-02-16 00:26:20">2026-02-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/moraya.github.io/2026/02/15/%E5%AE%9E%E4%B9%A0%E5%86%85%E5%AE%B9%E6%95%B4%E7%90%86/" title="实习日志：从功能测试到AI辅助测试">实习日志：从功能测试到AI辅助测试</a><time datetime="2026-02-15T12:35:00.000Z" title="发表于 2026-02-15 20:35:00">2026-02-15</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By AlanW</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/moraya.github.io/js/utils.js?v=5.5.4"></script><script src="/moraya.github.io/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
