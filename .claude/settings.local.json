@@ -18,7 +18,11 @@
       "Bash(hexo server:*)",
       "Bash(timeout:*)",
       "Bash(npx hexo:*)",
-      "Bash(npx hexo generate)"
+      "Bash(npx hexo generate)",
+      "WebSearch",
+      "Bash(curl:*)",
+      "Bash(python -c:*)",
+      "WebFetch(domain:www.chatbotarena.org)"
     ]
   }
 }
