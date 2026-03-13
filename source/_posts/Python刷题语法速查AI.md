@@ -17,25 +17,26 @@ description: 速查手册
 ## 目录
 
 1. [基础数据类型](#1-基础数据类型)
-2. [列表 List](#2-列表-list)
-3. [字符串 String](#3-字符串-string)
-4. [字典 Dict](#4-字典-dict)
-5. [集合 Set](#5-集合-set)
-6. [元组 Tuple](#6-元组-tuple)
+2. [列表 List](#2-列表-List)
+3. [字符串 String](#3-字符串-String)
+4. [字典 Dict](#4-字典-Dict)
+5. [集合 Set](#5-集合-Set)
+6. [元组 Tuple](#6-元组-Tuple)
 7. [双端队列 deque](#7-双端队列-deque)
 8. [堆 heapq](#8-堆-heapq)
 9. [排序](#9-排序)
 10. [二分查找 bisect](#10-二分查找-bisect)
-11. [Counter & defaultdict & OrderedDict](#11-counter--defaultdict--ordereddict)
+11. [Counter & defaultdict & OrderedDict](#11-Counter-defaultdict-OrderedDict)
 12. [递归与回溯](#12-递归与回溯)
 13. [动态规划常用写法](#13-动态规划常用写法)
 14. [位运算](#14-位运算)
 15. [数学运算](#15-数学运算)
 16. [迭代器与生成器](#16-迭代器与生成器)
-17. [链表节点 / 树节点定义](#17-链表节点--树节点定义)
+17. [链表节点 / 树节点定义](#17-链表节点-树节点定义)
 18. [图的表示与遍历](#18-图的表示与遍历)
 19. [常用内置函数](#19-常用内置函数)
 20. [复杂度速记表](#20-复杂度速记表)
+21. [ACM 输入输出（笔试模式）](#acm-io)
 
 ---
 
@@ -925,6 +926,153 @@ print(f"{val=}")          # Python 3.8+，打印变量名和值
 | 归并排序 | O(n log n) | O(n) |
 | 动态规划（一维） | O(n) | O(n) / O(1) 滚动 |
 | 动态规划（二维） | O(mn) | O(mn) / O(n) 滚动 |
+
+---
+
+<span id="acm-io"></span>
+
+## 21. ACM 输入输出（笔试模式）
+
+> 目标：把 LeetCode 风格代码，快速改成 ACM 模式（标准输入/标准输出）。
+
+### 21.1 ACM 模式是什么
+
+- 输入：从标准输入读取（`input()` / `sys.stdin`）
+- 输出：打印到标准输出（`print()`）
+- 不再有平台给定函数签名，需要自己写 `solve()`
+
+通用结构：
+
+```python
+def solve():
+    # 读取输入
+    # 处理逻辑
+    # 输出结果
+    pass
+
+if __name__ == "__main__":
+    solve()
+```
+
+### 21.2 常见输入格式模板
+
+单组输入：
+
+```python
+n = int(input().strip())
+nums = list(map(int, input().split()))
+print(sum(nums))
+```
+
+多组输入（第一行给组数 `T`）：
+
+```python
+T = int(input().strip())
+for _ in range(T):
+    a, b = map(int, input().split())
+    print(a + b)
+```
+
+多组输入（直到 `EOF`）：
+
+```python
+while True:
+    try:
+        a, b = map(int, input().split())
+        print(a + b)
+    except EOFError:
+        break
+```
+
+`n` 行矩阵输入：
+
+```python
+n, m = map(int, input().split())
+grid = [list(map(int, input().split())) for _ in range(n)]
+```
+
+字符串输入：
+
+```python
+s = input().strip()
+t = input().strip()
+print(s == t)
+```
+
+### 21.3 大数据量高性能输入
+
+按 token 读取（`sys.stdin.read`）：
+
+```python
+import sys
+
+data = sys.stdin.read().strip().split()
+idx = 0
+
+n = int(data[idx]); idx += 1
+nums = list(map(int, data[idx: idx + n])); idx += n
+print(sum(nums))
+```
+
+按行读取（`sys.stdin`）：
+
+```python
+import sys
+
+for line in sys.stdin:
+    line = line.strip()
+    if not line:
+        continue
+    a, b = map(int, line.split())
+    print(a + b)
+```
+
+### 21.4 输出与改写注意点
+
+- 多个答案逐行 `print(ans)`
+- 不要输出多余提示文字（如“结果是：”）
+- 题目要求空格分隔时：
+
+```python
+arr = [1, 2, 3]
+print(" ".join(map(str, arr)))
+```
+
+LeetCode -> ACM 改写步骤：
+
+1. 把函数参数改为“从输入读取”
+2. 把 `return` 改为 `print`
+3. 多组数据时套循环（`T` 组或直到 `EOF`）
+
+### 21.5 一份可直接开写的 ACM 模板
+
+```python
+import sys
+
+def solve():
+    data = sys.stdin.read().strip().split()
+    if not data:
+        return
+
+    idx = 0
+    # 示例：读取 n 和 n 个数
+    n = int(data[idx]); idx += 1
+    nums = list(map(int, data[idx: idx + n])); idx += n
+
+    ans = sum(nums)
+    print(ans)
+
+if __name__ == "__main__":
+    solve()
+```
+
+### 21.6 常见坑
+
+- `input()` 返回字符串，做数值运算前要 `int()` / `map(int, ...)`
+- `split()` 默认按任意空白分割（空格、`\t`）
+- 建议对整行输入先 `strip()`，减少首尾空白影响
+- `EOF` 题型建议用 `try/except EOFError`
+- 不要用 `sum`、`min`、`max` 当变量名，避免覆盖内置函数
 
 ---
 
