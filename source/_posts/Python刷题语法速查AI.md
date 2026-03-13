@@ -10,37 +10,39 @@ description: 速查手册
 ---
 
 # Python 刷题语法速查手册
+
 > 互联网企业技术面试 · LeetCode 知识点全覆盖
 
 ---
 
-## 目录
+**目录**
 
-1. [基础数据类型](#1-基础数据类型)
-2. [列表 List](#2-列表-List)
-3. [字符串 String](#3-字符串-String)
-4. [字典 Dict](#4-字典-Dict)
-5. [集合 Set](#5-集合-Set)
-6. [元组 Tuple](#6-元组-Tuple)
-7. [双端队列 deque](#7-双端队列-deque)
-8. [堆 heapq](#8-堆-heapq)
-9. [排序](#9-排序)
-10. [二分查找 bisect](#10-二分查找-bisect)
-11. [Counter & defaultdict & OrderedDict](#11-Counter-defaultdict-OrderedDict)
-12. [递归与回溯](#12-递归与回溯)
-13. [动态规划常用写法](#13-动态规划常用写法)
-14. [位运算](#14-位运算)
-15. [数学运算](#15-数学运算)
-16. [迭代器与生成器](#16-迭代器与生成器)
-17. [链表节点 / 树节点定义](#17-链表节点-树节点定义)
-18. [图的表示与遍历](#18-图的表示与遍历)
-19. [常用内置函数](#19-常用内置函数)
-20. [复杂度速记表](#20-复杂度速记表)
-21. [ACM 输入输出（笔试模式）](#acm-io)
+- [基础数据类型](#基础数据类型)
+- [列表 List](#列表-List)
+- [字符串 String](#字符串-String)
+- [字典 Dict](#字典-Dict)
+- [集合 Set](#集合-Set)
+- [元组 Tuple](#元组-Tuple)
+- [双端队列 deque](#双端队列-deque)
+- [堆 heapq](#堆-heapq)
+- [排序](#排序)
+- [二分查找 bisect](#二分查找-bisect)
+- [Counter & defaultdict & OrderedDict](#Counter-defaultdict-OrderedDict)
+- [递归与回溯](#递归与回溯)
+- [动态规划常用写法](#动态规划常用写法)
+- [位运算](#位运算)
+- [数学运算](#数学运算)
+- [迭代器与生成器](#迭代器与生成器)
+- [链表节点 / 树节点定义](#链表节点-树节点定义)
+- [图的表示与遍历](#图的表示与遍历)
+- [常用内置函数](#常用内置函数)
+- [复杂度速记表](#复杂度速记表)
+- [ACM 输入输出（笔试模式）](#acm-io)
+- [附录：高频面试题对应知识点索引](#附录高频面试题对应知识点索引)
 
 ---
 
-## 1. 基础数据类型
+## 基础数据类型
 
 ```python
 # 整数无限精度，无需担心溢出
@@ -72,7 +74,7 @@ float('-inf')
 
 ---
 
-## 2. 列表 List
+## 列表 List
 
 ```python
 # 初始化
@@ -125,7 +127,7 @@ stack[-1]         # peek
 
 ---
 
-## 3. 字符串 String
+## 字符串 String
 
 ```python
 s = "Hello, World!"
@@ -176,7 +178,7 @@ offset = ord(c) - ord('a')   # 'a'->0, 'b'->1, ...
 
 ---
 
-## 4. 字典 Dict
+## 字典 Dict
 
 ```python
 # 初始化
@@ -211,7 +213,7 @@ d.setdefault("key", []).append(val)
 
 ---
 
-## 5. 集合 Set
+## 集合 Set
 
 ```python
 # 初始化（注意：{} 是空字典，空集合用 set()）
@@ -248,7 +250,7 @@ fs = frozenset([1, 2, 3])
 
 ---
 
-## 6. 元组 Tuple
+## 元组 Tuple
 
 ```python
 # 元组不可变，可以作字典 key
@@ -277,7 +279,7 @@ p.x, p.y
 
 ---
 
-## 7. 双端队列 deque
+## 双端队列 deque
 
 ```python
 from collections import deque
@@ -315,7 +317,7 @@ def bfs(start):
 
 ---
 
-## 8. 堆 heapq
+## 堆 heapq
 
 ```python
 import heapq
@@ -344,7 +346,7 @@ list(heapq.merge([1,3,5], [2,4,6]))   # [1,2,3,4,5,6]
 
 ---
 
-## 9. 排序
+## 排序
 
 ```python
 # sorted()：返回新列表，不改变原列表
@@ -376,7 +378,7 @@ chars.sort()   # ['a', 'b', 'c', 'd']
 
 ---
 
-## 10. 二分查找 bisect
+## 二分查找 bisect
 
 ```python
 import bisect
@@ -428,7 +430,7 @@ def upper_bound(nums, target):
 
 ---
 
-## 11. Counter & defaultdict & OrderedDict
+## Counter & defaultdict & OrderedDict
 
 ```python
 from collections import Counter, defaultdict, OrderedDict
@@ -470,7 +472,7 @@ od.popitem(last=True)          # 弹出末尾元素（LRU Cache 实现关键）
 
 ---
 
-## 12. 递归与回溯
+## 递归与回溯
 
 ```python
 import sys
@@ -520,7 +522,7 @@ def subsets(nums):
 
 ---
 
-## 13. 动态规划常用写法
+## 动态规划常用写法
 
 ```python
 # ── 一维 DP ──────────────────────────────────────
@@ -566,7 +568,7 @@ for item_weight, item_value in items:
 
 ---
 
-## 14. 位运算
+## 位运算
 
 ```python
 # 基础运算
@@ -608,7 +610,7 @@ while sub:
 
 ---
 
-## 15. 数学运算
+## 数学运算
 
 ```python
 import math
@@ -656,7 +658,7 @@ def is_prime(n):
 
 ---
 
-## 16. 迭代器与生成器
+## 迭代器与生成器
 
 ```python
 # enumerate：带索引遍历
@@ -705,7 +707,7 @@ prefix = list(accumulate(nums, operator.mul))     # 前缀积
 
 ---
 
-## 17. 链表节点 / 树节点定义
+## 链表节点 / 树节点定义
 
 ```python
 # ── 链表节点 ──────────────────────────────────────
@@ -766,7 +768,7 @@ def inorder(root):
 
 ---
 
-## 18. 图的表示与遍历
+## 图的表示与遍历
 
 ```python
 from collections import defaultdict, deque
@@ -854,7 +856,7 @@ class UnionFind:
 
 ---
 
-## 19. 常用内置函数
+## 常用内置函数
 
 ```python
 # 输入输出
@@ -899,7 +901,7 @@ print(f"{val=}")          # Python 3.8+，打印变量名和值
 
 ---
 
-## 20. 复杂度速记表
+## 复杂度速记表
 
 | 数据结构 / 操作 | 时间复杂度 | 备注 |
 |---|---|---|
@@ -931,11 +933,11 @@ print(f"{val=}")          # Python 3.8+，打印变量名和值
 
 <span id="acm-io"></span>
 
-## 21. ACM 输入输出（笔试模式）
+## ACM 输入输出（笔试模式）
 
 > 目标：把 LeetCode 风格代码，快速改成 ACM 模式（标准输入/标准输出）。
 
-### 21.1 ACM 模式是什么
+### ACM 模式是什么
 
 - 输入：从标准输入读取（`input()` / `sys.stdin`）
 - 输出：打印到标准输出（`print()`）
@@ -954,7 +956,7 @@ if __name__ == "__main__":
     solve()
 ```
 
-### 21.2 常见输入格式模板
+### 常见输入格式模板
 
 单组输入：
 
@@ -999,7 +1001,7 @@ t = input().strip()
 print(s == t)
 ```
 
-### 21.3 大数据量高性能输入
+### 大数据量高性能输入
 
 按 token 读取（`sys.stdin.read`）：
 
@@ -1027,7 +1029,7 @@ for line in sys.stdin:
     print(a + b)
 ```
 
-### 21.4 输出与改写注意点
+### 输出与改写注意点
 
 - 多个答案逐行 `print(ans)`
 - 不要输出多余提示文字（如“结果是：”）
@@ -1044,7 +1046,7 @@ LeetCode -> ACM 改写步骤：
 2. 把 `return` 改为 `print`
 3. 多组数据时套循环（`T` 组或直到 `EOF`）
 
-### 21.5 一份可直接开写的 ACM 模板
+### 一份可直接开写的 ACM 模板
 
 ```python
 import sys
@@ -1066,7 +1068,7 @@ if __name__ == "__main__":
     solve()
 ```
 
-### 21.6 常见坑
+### 常见坑
 
 - `input()` 返回字符串，做数值运算前要 `int()` / `map(int, ...)`
 - `split()` 默认按任意空白分割（空格、`\t`）
