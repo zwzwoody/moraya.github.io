@@ -18,13 +18,13 @@ description: 系统整理 LeetCode「SQL 50 题」七大题型的核心考点、
 **目录**
 
 - [题目分类总览](#题目分类总览)
-- [一、Select 基础查询](#一select-基础查询)
-- [二、Basic Joins 基础连接](#二basic-joins-基础连接)
-- [三、Basic Aggregate Functions 聚合函数](#三basic-aggregate-functions-聚合函数)
-- [四、Sorting and Grouping 排序分组](#四sorting-and-grouping-排序分组)
-- [五、Advanced Select and Joins 高级查询](#五advanced-select-and-joins-高级查询)
-- [六、Subqueries 子查询](#六subqueries-子查询)
-- [七、Advanced String Functions 字符串与正则](#七advanced-string-functions-字符串与正则)
+- [Select 基础查询](#select-基础查询)
+- [Basic Joins 基础连接](#basic-joins-基础连接)
+- [Basic Aggregate Functions 聚合函数](#basic-aggregate-functions-聚合函数)
+- [Sorting and Grouping 排序分组](#sorting-and-grouping-排序分组)
+- [Advanced Select and Joins 高级查询](#advanced-select-and-joins-高级查询)
+- [Subqueries 子查询](#subqueries-子查询)
+- [Advanced String Functions 字符串与正则](#advanced-string-functions-字符串与正则)
 - [核心解题模板汇总](#核心解题模板汇总)
 - [高频易错点速查](#高频易错点速查)
 - [LeetCode SQL 50 题目索引](#leetcode-sql-50-题目索引)
@@ -45,11 +45,11 @@ description: 系统整理 LeetCode「SQL 50 题」七大题型的核心考点、
 
 ---
 
-## 一、Select 基础查询
+## Select 基础查询
 
 > **涉及题目**：1757、584、595、1148、1683
 
-### 1. NULL 值判断（高频陷阱）
+### NULL 值判断（高频陷阱）
 
 ```sql
 -- ❌ 错误：NULL 不能用 = 判断
@@ -67,7 +67,7 @@ FROM Customer
 WHERE referee_id != 2 OR referee_id IS NULL;
 ```
 
-### 2. 多条件组合过滤
+### 多条件组合过滤
 
 ```sql
 -- AND / OR 的优先级：AND > OR，复杂条件建议加括号
@@ -78,7 +78,7 @@ WHERE area >= 3000000 OR population >= 25000000;
 
 **经典题**：[595. Big Countries](https://leetcode.cn/problems/big-countries/)
 
-### 3. 字符串长度判断
+### 字符串长度判断
 
 ```sql
 -- CHAR_LENGTH 统计字符数（推荐），LENGTH 统计字节数
@@ -89,7 +89,7 @@ WHERE CHAR_LENGTH(content) > 15;
 
 **经典题**：[1683. Invalid Tweets](https://leetcode.cn/problems/invalid-tweets/)
 
-### 4. 去重查询
+### 去重查询
 
 ```sql
 -- DISTINCT 用于去除重复行（对后面所有列生效）
@@ -112,11 +112,11 @@ ORDER BY id;
 
 ---
 
-## 二、Basic Joins 基础连接
+## Basic Joins 基础连接
 
 > **涉及题目**：1378、1068、1581、197、1661、577、1280、570、1934
 
-### 5. LEFT JOIN + IS NULL（找"没有"的数据）
+### LEFT JOIN + IS NULL（找"没有"的数据）
 
 这是本类最高频考点，用于找出一张表中不满足另一张表条件的记录。
 
@@ -142,7 +142,7 @@ Visits (左表全保留)    Transactions (右表)
      3      ←→ 匹配        有值
 ```
 
-### 6. 自连接（同表比较）
+### 自连接（同表比较）
 
 用于同一张表中行与行之间的比较。
 
@@ -159,7 +159,7 @@ WHERE w1.temperature > w2.temperature;
 
 > **注意**：日期比较用 `DATEDIFF()` 而非直接 `-1`，避免跨月/年出错。
 
-### 7. 多表 JOIN 与聚合结合
+### 多表 JOIN 与聚合结合
 
 ```sql
 -- 统计每台机器的平均处理时间
@@ -177,7 +177,7 @@ GROUP BY a1.machine_id;
 
 **经典题**：[1661. Average Time of Process per Machine](https://leetcode.cn/problems/average-time-of-process-per-machine/)
 
-### 8. LEFT JOIN 处理"可能不存在"的数据
+### LEFT JOIN 处理"可能不存在"的数据
 
 当右表数据不一定存在时，用 LEFT JOIN + IFNULL/COALESCE 处理。
 
@@ -191,7 +191,7 @@ WHERE b.bonus < 1000 OR b.bonus IS NULL;
 
 **经典题**：[577. Employee Bonus](https://leetcode.cn/problems/employee-bonus/)
 
-### 9. 三表 JOIN + CROSS JOIN 生成全组合
+### 三表 JOIN + CROSS JOIN 生成全组合
 
 ```sql
 -- 统计每个学生每科的考试次数
@@ -212,7 +212,7 @@ ORDER BY s.student_id, sub.subject_name;
 
 > **技巧**：用 `CROSS JOIN` 生成所有学生×科目的笛卡尔积，再 LEFT JOIN 实际考试记录。
 
-### 10. 管理层查询（统计下属数量）
+### 管理层查询（统计下属数量）
 
 ```sql
 -- 找出直属下属数量 >= 5 的经理
@@ -239,11 +239,11 @@ WHERE id IN (
 
 ---
 
-## 三、Basic Aggregate Functions 聚合函数
+## Basic Aggregate Functions 聚合函数
 
 > **涉及题目**：620、1251、1075、1633、1211、1193、1174、550
 
-### 11. AVG + JOIN（加权平均）
+### AVG + JOIN（加权平均）
 
 ```sql
 -- 每个产品的平均售价（按销量加权）
@@ -261,7 +261,7 @@ GROUP BY p.product_id;
 
 > **注意**：不能直接用 `AVG(price)`，要按 `units` 加权：`SUM(price * units) / SUM(units)`
 
-### 12. ROUND 精度控制
+### ROUND 精度控制
 
 ```sql
 -- 统计每次查询的质量（quality）和差评率（poor_query_percentage）
@@ -276,7 +276,7 @@ GROUP BY query_name;
 
 **经典题**：[1211. Queries Quality and Percentage](https://leetcode.cn/problems/queries-quality-and-percentage/)
 
-### 13. 条件聚合（CASE WHEN + SUM/COUNT）
+### 条件聚合（CASE WHEN + SUM/COUNT）
 
 ```sql
 -- 按月统计各类型交易数量和金额
@@ -293,7 +293,7 @@ GROUP BY DATE_FORMAT(trans_date, '%Y-%m'), country;
 
 **经典题**：[1193. Monthly Transactions I](https://leetcode.cn/problems/monthly-transactions-i/)
 
-### 14. 首次行为分析
+### 首次行为分析
 
 ```sql
 -- 即时配送率（首单是否即时配送）
@@ -315,7 +315,7 @@ JOIN first_order f
 
 **经典题**：[1174. Immediate Food Delivery II](https://leetcode.cn/problems/immediate-food-delivery-ii/)
 
-### 15. 次日留存率计算
+### 次日留存率计算
 
 ```sql
 -- 游戏次日留存率
@@ -349,11 +349,11 @@ IFNULL(expr, 0)       -- NULL 替换为 0
 
 ---
 
-## 四、Sorting and Grouping 排序分组
+## Sorting and Grouping 排序分组
 
 > **涉及题目**：2356、1141、1084、596、185、1789、610、180、1164、1204
 
-### 16. 窗口函数解决分组 TopN（重点）
+### 窗口函数解决分组 TopN（重点）
 
 ```sql
 -- 每个部门薪资前三（DENSE_RANK 不跳号）
@@ -370,7 +370,7 @@ WHERE e.dr <= 3;
 
 **经典题**：[185. Department Top Three Salaries](https://leetcode.cn/problems/department-top-three-salaries/)
 
-### 17. 连续数字问题（LEAD 向前看）
+### 连续数字问题（LEAD 向前看）
 
 **核心思路**：连续数字 → 相邻行号差固定 → 用 `LEAD` 向前取值比较
 
@@ -390,7 +390,7 @@ WHERE num = next1 AND num = next2;
 
 **经典题**：[180. Consecutive Numbers](https://leetcode.cn/problems/consecutive-numbers/)
 
-### 18. 员工主部门（UNION 条件筛选）
+### 员工主部门（UNION 条件筛选）
 
 ```sql
 -- 员工只属于一个部门时返回该部门，属于多个时返回 primary_flag='Y' 的
@@ -406,7 +406,7 @@ HAVING COUNT(*) = 1;
 
 **经典题**：[1789. Primary Department for Each Employee](https://leetcode.cn/problems/primary-department-for-each-employee/)
 
-### 19. 历史价格查询（SCD 缓慢变化维度）
+### 历史价格查询（SCD 缓慢变化维度）
 
 ```sql
 -- 查询 2019-08-16 时每个产品的价格（变更前的最新价格）
@@ -428,7 +428,7 @@ WHERE product_id NOT IN (
 
 **经典题**：[1164. Product Price at a Given Date](https://leetcode.cn/problems/product-price-at-a-given-date/)
 
-### 20. 累计求和 + 边界判断
+### 累计求和 + 边界判断
 
 ```sql
 -- 最后一个能上车不超重的人（累计体重）
@@ -447,7 +447,7 @@ LIMIT 1;
 
 **经典题**：[1204. Last Person to Fit in the Bus](https://leetcode.cn/problems/last-person-to-fit-in-the-bus/)
 
-### 21. 三角形判断（CASE WHEN 逻辑判断）
+### 三角形判断（CASE WHEN 逻辑判断）
 
 ```sql
 -- 判断三边能否构成三角形
@@ -463,11 +463,11 @@ FROM Triangle;
 
 ---
 
-## 五、Advanced Select and Joins 高级查询
+## Advanced Select and Joins 高级查询
 
 > **涉及题目**：1907、1978、626、1341、1321、602、585
 
-### 22. UNION ALL 固定分类汇总
+### UNION ALL 固定分类汇总
 
 ```sql
 -- 统计低收入、平均收入、高收入各有多少人
@@ -485,7 +485,7 @@ FROM Accounts WHERE income > 50000;
 
 > **技巧**：`UNION ALL` 比 `UNION` 快（不去重），固定分类用 UNION ALL 拼接更清晰。
 
-### 23. MOD 奇偶行交换（CASE WHEN 精妙用法）
+### MOD 奇偶行交换（CASE WHEN 精妙用法）
 
 ```sql
 -- 奇数行与下一行的学生座位互换
@@ -502,7 +502,7 @@ ORDER BY id;
 
 **经典题**：[626. Exchange Seats](https://leetcode.cn/problems/exchange-seats/)
 
-### 24. 多维度排名各取最优（UNION ALL）
+### 多维度排名各取最优（UNION ALL）
 
 ```sql
 -- 电影评分最高的用户 & 评分最高的电影（各取第一）
@@ -528,7 +528,7 @@ UNION ALL
 
 **经典题**：[1341. Movie Rating](https://leetcode.cn/problems/movie-rating/)
 
-### 25. 滑动窗口（ROWS BETWEEN）
+### 滑动窗口（ROWS BETWEEN）
 
 ```sql
 -- 餐厅近7天的移动平均消费额
@@ -547,7 +547,7 @@ LIMIT 18446744073709551615 OFFSET 6;
 
 **经典题**：[1321. Restaurant Growth](https://leetcode.cn/problems/restaurant-growth/)
 
-### 26. 双向关系聚合（UNION ALL 展开）
+### 双向关系聚合（UNION ALL 展开）
 
 ```sql
 -- 拥有最多好友的用户（好友关系是双向的）
@@ -564,7 +564,7 @@ LIMIT 1;
 
 **经典题**：[602. Friend Requests II: Who Has the Most Friends](https://leetcode.cn/problems/friend-requests-ii-who-has-the-most-friends/)
 
-### 27. 多条件 IN 子查询过滤
+### 多条件 IN 子查询过滤
 
 ```sql
 -- 找出 2021 年在不同城市有相同总投保金额的投保人
@@ -582,11 +582,11 @@ AND (lat, lon) IN (
 
 ---
 
-## 六、Subqueries 子查询
+## Subqueries 子查询
 
 > **涉及题目**：176、177、178、184、196、1978、262
 
-### 28. 相关子查询（Correlated Subquery）
+### 相关子查询（Correlated Subquery）
 
 每行都执行一次子查询，通过外层列与内层列关联。
 
@@ -603,7 +603,7 @@ ORDER BY employee_id;
 
 **经典题**：[1978. Employees Whose Manager Left the Company](https://leetcode.cn/problems/employees-whose-manager-left-the-company/)
 
-### 29. 第 N 高的值（DENSE_RANK 通用解法）
+### 第 N 高的值（DENSE_RANK 通用解法）
 
 ```sql
 -- 第二高的薪资（不存在则返回 NULL）
@@ -634,7 +634,7 @@ END
 
 **经典题**：[176. Second Highest Salary](https://leetcode.cn/problems/second-highest-salary/) / [177. Nth Highest Salary](https://leetcode.cn/problems/nth-highest-salary/)
 
-### 30. CTE 分步处理（推荐写法）
+### CTE 分步处理（推荐写法）
 
 CTE（公共表表达式）让复杂查询更易读，面试中是加分项。
 
@@ -656,7 +656,7 @@ SELECT ROUND(COUNT(*) / (SELECT COUNT(DISTINCT player_id) FROM Activity), 2) AS 
 FROM step2;
 ```
 
-### 31. EXISTS vs IN 的选择
+### EXISTS vs IN 的选择
 
 ```sql
 -- NOT EXISTS（当子查询结果可能含 NULL 时，比 NOT IN 更安全）
@@ -670,7 +670,7 @@ WHERE NOT EXISTS (
 -- WHERE manager_id NOT IN (SELECT id FROM Managers)  -- 危险！
 ```
 
-### 32. 窗口函数嵌套在子查询中使用
+### 窗口函数嵌套在子查询中使用
 
 窗口函数不能直接出现在 WHERE 中，必须套一层子查询再过滤。
 
@@ -698,11 +698,11 @@ WHERE rn = 1;
 
 ---
 
-## 七、Advanced String Functions 字符串与正则
+## Advanced String Functions 字符串与正则
 
 > **涉及题目**：1667、1527、196、1484、1327、1517
 
-### 33. 大小写规范化（首字母大写）
+### 大小写规范化（首字母大写）
 
 ```sql
 -- 修复姓名格式：首字母大写，其余小写
@@ -715,7 +715,7 @@ ORDER BY user_id;
 
 **经典题**：[1667. Fix Names in a Table](https://leetcode.cn/problems/fix-names-in-a-table/)
 
-### 34. LIKE 模糊匹配 vs REGEXP 正则
+### LIKE 模糊匹配 vs REGEXP 正则
 
 ```sql
 -- LIKE：简单匹配
@@ -727,7 +727,7 @@ WHERE conditions REGEXP '(^|\\s)DIAB1'
 
 **经典题**：[1527. Patients With a Condition](https://leetcode.cn/problems/patients-with-a-condition/)
 
-### 35. 删除重复行（DELETE + 子查询）
+### 删除重复行（DELETE + 子查询）
 
 ```sql
 -- 删除重复 Email，只保留 id 最小的行
@@ -745,7 +745,7 @@ WHERE id NOT IN (
 
 > **注意**：MySQL 中不能在 DELETE 的子查询里直接引用同一张表，需要套一层派生表。
 
-### 36. GROUP_CONCAT 聚合字符串
+### GROUP_CONCAT 聚合字符串
 
 ```sql
 -- 按日期聚合当天售出的产品（去重，按字母排序，逗号分隔）
@@ -760,7 +760,7 @@ ORDER BY sell_date;
 
 **经典题**：[1484. Group Sold Products By The Date](https://leetcode.cn/problems/group-sold-products-by-the-date/)
 
-### 37. 邮箱格式正则验证
+### 邮箱格式正则验证
 
 ```sql
 -- 验证合法的邮箱格式
@@ -777,7 +777,7 @@ WHERE mail REGEXP '^[a-zA-Z][a-zA-Z0-9_.-]*@leetcode\\.com$';
 
 **经典题**：[1517. Find Users With Valid E-Mails](https://leetcode.cn/problems/find-users-with-valid-e-mails/)
 
-### 38. 日期格式化 + 条件过滤
+### 日期格式化 + 条件过滤
 
 ```sql
 -- 查询特定月份订购数量 >= 100 的产品
@@ -823,7 +823,7 @@ REGEXP_REPLACE(str, pattern, replacement)    -- MySQL 8.0+
 
 ## 核心解题模板汇总
 
-### 模板1：分组 TopN
+### 模板：分组 TopN
 
 ```sql
 SELECT *
@@ -836,7 +836,7 @@ FROM (
 WHERE dr <= N;
 ```
 
-### 模板2：LEFT JOIN + IS NULL（找"没有"的数据）
+### 模板：LEFT JOIN + IS NULL（找"没有"的数据）
 
 ```sql
 SELECT a.id
@@ -845,7 +845,7 @@ LEFT JOIN 关联表 b ON a.id = b.aid AND [其他条件]
 WHERE b.id IS NULL;
 ```
 
-### 模板3：连续问题（日期 - 行号 = 常数）
+### 模板：连续问题（日期 - 行号 = 常数）
 
 ```sql
 WITH dedup AS (
@@ -865,7 +865,7 @@ GROUP BY user_id, grp
 HAVING streak >= N;
 ```
 
-### 模板4：留存率
+### 模板：留存率
 
 ```sql
 SELECT
@@ -876,7 +876,7 @@ LEFT JOIN 行为表 b
     AND b.event_date = DATE_ADD(a.first_date, INTERVAL N DAY);
 ```
 
-### 模板5：条件聚合（行列转换核心）
+### 模板：条件聚合（行列转换核心）
 
 ```sql
 SELECT
@@ -888,7 +888,7 @@ FROM 表名
 GROUP BY group_col;
 ```
 
-### 模板6：滑动窗口聚合
+### 模板：滑动窗口聚合
 
 ```sql
 SELECT

@@ -1,6 +1,7 @@
 ---
 title: SQL高频考点速查手册AI
 date: 2026-03-14 13:34:22
+published: false
 tags:
   - SQL
   - 面试
