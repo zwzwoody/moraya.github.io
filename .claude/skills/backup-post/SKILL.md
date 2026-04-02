@@ -1,11 +1,11 @@
 ---
 name: backup-post
-description: 备份博客文章到 pages-tmp 目录。用于在编辑文章前保存原始版本，文件夹名称与文件名一致。
+description: 备份博客文章到 page-tmp 目录。用于在编辑文章前保存原始版本，文件夹名称与文件名一致。
 ---
 
 # Backup Post
 
-帮助用户备份正在编辑的博客文章到 `pages-tmp` 目录，便于版本管理和恢复。
+帮助用户备份正在编辑的博客文章到 `page-tmp` 目录，便于版本管理和恢复。
 
 ## 快速开始
 
@@ -24,10 +24,10 @@ description: 备份博客文章到 pages-tmp 目录。用于在编辑文章前�
 
 ### 第二步：执行备份
 
-运行 `node .claude/skills/scripts/backup-post.js`，自动：
+运行 `node .claude/skills/backup-post/scripts/backup-post.js`，自动：
 
 1. **创建备份文件夹**：
-   - 路径：`pages-tmp/<文件名>/`
+   - 路径：`page-tmp/<文件名>/`
    - 文件名使用原始 markdown 文件名（不含扩展名）
 
 2. **复制文件**：
@@ -44,7 +44,7 @@ description: 备份博客文章到 pages-tmp 目录。用于在编辑文章前�
 4. **备份结构示例**：
 
 ```
-pages-tmp/
+page-tmp/
 └── my-post/                  # 与博客文件名一致
     ├── my-post.md           # 博客文章
     ├── image1.png           # 引用的图片
@@ -55,7 +55,7 @@ pages-tmp/
 
 ### 第三步：完成提示
 
-告知用户备份位置，提示如需恢复可从 `pages-tmp/` 复制文件回 `source/_posts/`
+告知用户备份位置，提示如需恢复可从 `page-tmp/` 复制文件回 `source/_posts/`
 
 ## 流程图
 
@@ -65,7 +65,7 @@ pages-tmp/
 文章路径 → 验证文件是否存在
     ↓
 执行 backup-post.js 脚本
-    ├── 创建 pages-tmp/<文件名>/ 目录
+    ├── 创建 page-tmp/<文件名>/ 目录
     ├── 复制 .md 文件
     ├── 解析并复制引用的图片
     └── 复制资源文件夹（如果有）
@@ -79,33 +79,33 @@ pages-tmp/
 
 ```
 输入文章路径: hello-world.md
-✅ 已备份到: pages-tmp/hello-world/
+✅ 已备份到: page-tmp/hello-world/
 ```
 
 ### 带文件夹路径
 
 ```
 输入文章路径: 2026/new-post.md
-✅ 已备份到: pages-tmp/new-post/
+✅ 已备份到: page-tmp/new-post/
 ```
 
 ### 完整路径
 
 ```
 输入文章路径: E:\blog\source\_posts\my-post.md
-✅ 已备份到: pages-tmp/my-post/
+✅ 已备份到: page-tmp/my-post/
 ```
 
 ## 恢复说明
 
 如需恢复备份：
 
-1. 从 `pages-tmp/<文件名>/` 复制文件
+1. 从 `page-tmp/<文件名>/` 复制文件
 2. 粘贴回 `source/_posts/` 覆盖原文件
 
 ```
-pages-tmp/hello-world/hello-world.md  →  source/_posts/hello-world.md
-pages-tmp/hello-world/hello-world/    →  source/_posts/hello-world/
+page-tmp/hello-world/hello-world.md  →  source/_posts/hello-world.md
+page-tmp/hello-world/hello-world/    →  source/_posts/hello-world/
 ```
 
 ## 文件结构
@@ -131,5 +131,5 @@ pages-tmp/hello-world/hello-world/    →  source/_posts/hello-world/
 - 尝试使用完整路径
 
 **备份失败**：
-- 检查 `pages-tmp/` 目录是否有写入权限
+- 检查 `page-tmp/` 目录是否有写入权限
 - 确认磁盘空间充足

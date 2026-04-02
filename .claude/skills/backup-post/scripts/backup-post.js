@@ -17,10 +17,23 @@ if (args.length === 0) {
     process.exit(1);
 }
 
-const inputPath = args[0];
+const rawInput = args[0];
 let mdFilePath = '';
 let postFileName = '';
 let postDir = '';
+
+// 规范化输入路径：去除可能包含的 source/_posts 前缀
+function normalizeInput(input) {
+    // 统一使用正斜杠处理
+    const normalized = input.replace(/\\/g, '/');
+    // 如果路径已经以 source/_posts 开头，直接返回项目根目录下的该路径
+    if (normalized.startsWith('source/_posts/')) {
+        return path.join(projectRoot, normalized);
+    }
+    return normalized;
+}
+
+const inputPath = normalizeInput(rawInput);
 
 // 判断是完整路径还是相对路径
 if (path.isAbsolute(inputPath)) {

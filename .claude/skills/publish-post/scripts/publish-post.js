@@ -25,14 +25,25 @@ function getCurrentDate() {
 }
 
 // 解析命令行参数
-const postPath = process.argv[2];
+const postPathArg = process.argv[2];
 const title = process.argv[3];
 const tags = process.argv[4];
 
-if (!postPath || !title) {
+if (!postPathArg || !title) {
   console.error('用法: node publish-post.js <文章路径> <标题> [标签]');
   process.exit(1);
 }
+
+// 规范化路径：去除可能包含的 source/_posts 前缀
+function normalizePostPath(input) {
+  const normalized = input.replace(/\\/g, '/');
+  if (normalized.startsWith('source/_posts/')) {
+    return normalized.slice('source/_posts/'.length);
+  }
+  return normalized;
+}
+
+const postPath = normalizePostPath(postPathArg);
 
 // 解析路径
 let fullPath;
@@ -152,29 +163,24 @@ content = content.replace(htmlImgRegex, (match, imgPath) => {
   return `{% asset_img ${fileName} %}`;
 });
 
-// 处理 front matter
-const dateStr = getCurrentDate();
-const tagList = tags ? tags.split(',').map(t => t.trim()).filter(t => t) : [];
-
-let frontMatter = `---\ntitle: ${title}\ndate: ${dateStr}\n`;
-
-if (tagList.length > 0) {
-  frontMatter += `tags:\n`;
-  tagList.forEach(tag => {
-    frontMatter += `  - ${tag}\n`;
-  });
-}
-
-frontMatter += `---\n\n`;
-
-// 检查文章是否已有 front matter
+// 处理 front matter：已有则完全保留，没有才新增
 const frontMatterRegex = /^---\s*\n[\s\S]*?\n---\s*\n/;
 if (frontMatterRegex.test(content)) {
-  // 替换现有的 front matter
-  content = content.replace(frontMatterRegex, frontMatter);
-  console.log('更新已存在的 front matter');
+  console.log('文章已有 front matter，保留原样不做修改');
 } else {
-  // 在内容开头添加 front matter
+  const dateStr = getCurrentDate();
+  const tagList = tags ? tags.split(',').map(t => t.trim()).filter(t => t) : [];
+
+  let frontMatter = `---\ntitle: ${title}\ndate: ${dateStr}\n`;
+
+  if (tagList.length > 0) {
+    frontMatter += `tags:\n`;
+    tagList.forEach(tag => {
+      frontMatter += `  - ${tag}\n`;
+    });
+  }
+
+  frontMatter += `---\n\n`;
   content = frontMatter + content;
   console.log('添加新的 front matter');
 }
@@ -199,4 +205,4 @@ console.log('\n✅ 处理完成！');
 console.log(`文章: ${fullPath}`);
 console.log(`资源目录: ${assetDirPath}`);
 console.log(`图片数量: ${processedImages.size}`);
-console.log(`\n📁 备份由 backup-post skill 负责，备份位置: pages-tmp/`);
+console.log(`\n📁 备份由 backup-post skill 负责，备份位置: page-tmp/`);
