@@ -22,7 +22,12 @@
       "WebSearch",
       "Bash(curl:*)",
       "Bash(python -c:*)",
-      "WebFetch(domain:www.chatbotarena.org)"
+      "WebFetch(domain:www.chatbotarena.org)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill /PID 43624 /F)",
+      "Bash(cmd.exe /c \"taskkill /PID 43624 /F\")",
+      "Bash(cmd.exe /c \"taskkill /PID 25652 /F\")",
+      "Bash(npx taskkill:*)"
     ]
   }
 }
