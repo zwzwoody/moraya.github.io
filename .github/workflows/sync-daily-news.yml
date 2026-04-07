@@ -52,11 +52,11 @@ jobs:
           UPDATE_TIME=$(date '+%Y-%m-%d %H:%M:%S')
           TODAY=$(date +%Y-%m-%d)
 
-          # 读取 HTML 内容
-          NEWS_HTML=$(cat news-temp.html)
+          # 读取 HTML 内容并进行 base64 编码（避免特殊字符问题）
+          NEWS_HTML_B64=$(base64 -w 0 news-temp.html)
 
-          # 创建新的页面内容 - 直接嵌入完整的 HTML
-          cat > source/daily-news/index.md << EOF
+          # 创建页面头部
+          cat > source/daily-news/index.md << 'HEADER_EOF'
 ---
 title: 每日热点
 date: ${UPDATE_TIME}
@@ -72,7 +72,14 @@ comments: false
   </div>
 
   <div class="news-iframe-container">
-    <iframe id="news-frame" srcdoc="$(echo "$NEWS_HTML" | sed 's/"/\\"/g' | sed ':a;N;$!ba;s/\n/\\n/g')" frameborder="0" scrolling="no"></iframe>
+    <iframe id="news-frame" srcdoc="HEADER_EOF
+
+          # 追加 HTML 内容（base64 解码后嵌入）
+          echo "$NEWS_HTML_B64" | base64 -d | sed 's/"/\\"/g' | sed ':a;N;$!ba;s/\n/\\n/g' >> source/daily-news/index.md
+
+          # 追加页面尾部
+          cat >> source/daily-news/index.md << 'FOOTER_EOF'
+" frameborder="0" scrolling="no"></iframe>
   </div>
 
   <div class="news-footer">
@@ -136,7 +143,6 @@ comments: false
   font-size: 12px;
 }
 
-/* Dark mode support */
 [data-theme="dark"] .news-iframe-container {
   background: #1a1a1a;
 }
@@ -148,24 +154,26 @@ comments: false
 </style>
 
 <script>
-// Auto-resize iframe based on content
 window.addEventListener('load', function() {
   var iframe = document.getElementById('news-frame');
   if (iframe) {
     try {
       iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
     } catch(e) {
-      // Cross-origin restrictions may prevent this
       iframe.style.height = '800px';
     }
   }
 });
 </script>
-EOF
+FOOTER_EOF
+
+          # 替换日期变量
+          sed -i "s/\${UPDATE_TIME}/${UPDATE_TIME}/g" source/daily-news/index.md
+          sed -i "s/\${TODAY}/${TODAY}/g" source/daily-news/index.md
 
           echo "News page updated successfully"
           echo "--- Preview ---"
-          head -50 source/daily-news/index.md
+          head -30 source/daily-news/index.md
 
       - name: Commit and push
         run: |
