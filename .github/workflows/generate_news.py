@@ -1,15 +1,28 @@
 import os
+import base64
 
 # 从环境变量读取时间信息
 update_time = os.environ.get('UPDATE_TIME', '')
 today = os.environ.get('TODAY', '')
 
+# 检查 HTML 文件是否存在
+if not os.path.exists('news-temp.html'):
+    print('Error: news-temp.html not found')
+    exit(1)
+
 # 读取 HTML 内容
 with open('news-temp.html', 'r', encoding='utf-8') as f:
     html_content = f.read()
 
-# 转义 HTML 用于 iframe srcdoc（双引号转实体，换行转空格）
-html_escaped = html_content.replace('&', '&amp;').replace('"', '&quot;').replace('<', '&lt;').replace('>', '&gt;').replace('\n', ' ').replace('\r', '')
+if not html_content.strip():
+    print('Error: HTML content is empty')
+    exit(1)
+
+# 对 HTML 进行 base64 编码，避免引号和特殊字符问题
+html_b64 = base64.b64encode(html_content.encode('utf-8')).decode('utf-8')
+
+# 确保目标目录存在
+os.makedirs('source/daily-news', exist_ok=True)
 
 # 生成 Markdown 内容
 content = f"""---
@@ -27,7 +40,7 @@ comments: false
   </div>
 
   <div class="news-iframe-container">
-    <iframe id="news-frame" srcdoc="{html_escaped}" frameborder="0" scrolling="no"></iframe>
+    <iframe id="news-frame" src="data:text/html;base64,{html_b64}" frameborder="0" scrolling="no"></iframe>
   </div>
 
   <div class="news-footer">
@@ -103,4 +116,5 @@ window.addEventListener('load', function() {{
 with open('source/daily-news/index.md', 'w', encoding='utf-8') as f:
     f.write(content)
 
-print('News page generated successfully')
+print(f'News page generated successfully at {update_time}')
+print(f'HTML size: {len(html_content)} chars, Base64 size: {len(html_b64)} chars')
