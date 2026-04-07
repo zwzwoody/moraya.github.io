@@ -8,8 +8,8 @@ today = os.environ.get('TODAY', '')
 with open('news-temp.html', 'r', encoding='utf-8') as f:
     html_content = f.read()
 
-# 转义双引号并转为单行（用于 iframe srcdoc）
-html_escaped = html_content.replace('"', '\\"').replace('\n', '\\n')
+# 转义 HTML 用于 iframe srcdoc（双引号转实体，换行转空格）
+html_escaped = html_content.replace('&', '&amp;').replace('"', '&quot;').replace('<', '&lt;').replace('>', '&gt;').replace('\n', ' ').replace('\r', '')
 
 # 生成 Markdown 内容
 content = f"""---
