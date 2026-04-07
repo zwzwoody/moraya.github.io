@@ -28,7 +28,7 @@ jobs:
           if [ -n "${{ github.event.inputs.news_url }}" ]; then
             NEWS_URL="${{ github.event.inputs.news_url }}"
           else
-            NEWS_URL="https://raw.githubusercontent.com/zwzwoody/trendradar/main/output/html/latest/daily.html"
+            NEWS_URL="https://raw.githubusercontent.com/zwzwoody/trendradar/master/output/html/latest/daily.html"
           fi
 
           echo "Fetching news from: $NEWS_URL"
