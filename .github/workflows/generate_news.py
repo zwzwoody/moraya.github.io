@@ -1,6 +1,7 @@
 import os
 import re
 from html import escape
+from html.parser import HTMLParser
 
 # 从环境变量读取时间信息
 update_time = os.environ.get('UPDATE_TIME', '')
@@ -43,26 +44,106 @@ for pattern, key in stat_patterns:
     if match:
         stats[key] = match.group(1).strip()
 
-# 提取所有 word-group（新闻源分组）
+# 使用简单的字符串查找和栈来提取 word-group
+def extract_word_groups(html):
+    """提取所有 word-group 的内容"""
+    groups = []
+    idx = 0
+
+    while True:
+        # 查找 word-group 开始标签
+        start_match = re.search(r'<div class="word-group">', html[idx:])
+        if not start_match:
+            break
+
+        start_pos = idx + start_match.end()
+
+        # 使用栈来找到匹配的结束标签
+        depth = 1
+        pos = start_pos
+
+        while depth > 0 and pos < len(html):
+            # 查找下一个开标签或闭标签
+            next_open = html.find('<div', pos)
+            next_close = html.find('</div>', pos)
+
+            if next_close == -1:
+                break
+
+            if next_open != -1 and next_open < next_close:
+                # 找到开标签
+                # 检查是否是自闭合或注释
+                tag_end = html.find('>', next_open)
+                if tag_end != -1:
+                    depth += 1
+                pos = tag_end + 1 if tag_end != -1 else next_open + 1
+            else:
+                # 找到闭标签
+                depth -= 1
+                pos = next_close + 6  # len('</div>') = 6
+
+        if depth == 0:
+            group_content = html[start_pos:pos-6]  # 排除最后的 </div>
+            groups.append(group_content)
+
+        idx = pos
+
+    return groups
+
+# 提取所有 word-group
+word_groups_raw = extract_word_groups(html_content)
+print(f"Found {len(word_groups_raw)} word groups")
+
+# 解析每个 word-group
 word_groups = []
-word_group_pattern = r'<div class="word-group">(.*?)<\/div>\s*<\/div>\s*(?=<div class="word-group">|<div class="footer">|$)'
-word_groups_raw = re.findall(word_group_pattern, html_content, re.DOTALL)
 
 for group_html in word_groups_raw[:8]:  # 限制最多8个源
-    # 提取源名称和数量
+    # 提取源名称
     source_match = re.search(r'<div class="word-name">([^<]+)</div>', group_html)
+    if not source_match:
+        continue
+
+    source_name = source_match.group(1).strip()
+
+    # 提取数量
     count_match = re.search(r'<div class="word-count[^"]*">([^<]+)</div>', group_html)
+    news_count = count_match.group(1).strip() if count_match else '0 条'
 
-    if source_match:
-        source_name = source_match.group(1).strip()
-        news_count = count_match.group(1).strip() if count_match else '0 条'
+    # 提取新闻项 - 使用栈方法
+    news_items = []
+    idx = 0
 
-        # 提取新闻项
-        news_items = []
-        news_pattern = r'<div class="news-item[^"]*">(.*?)<\/div>\s*<\/div>\s*<\/div>'
-        news_matches = re.findall(news_pattern, group_html, re.DOTALL)
+    while True:
+        # 查找 news-item 开始标签
+        item_start_match = re.search(r'<div class="news-item[^"]*">', group_html[idx:])
+        if not item_start_match:
+            break
 
-        for news_html in news_matches[:15]:  # 每个源最多15条
+        start_pos = idx + item_start_match.end()
+
+        # 使用栈来找到匹配的结束标签
+        depth = 1
+        pos = start_pos
+
+        while depth > 0 and pos < len(group_html):
+            next_open = group_html.find('<div', pos)
+            next_close = group_html.find('</div>', pos)
+
+            if next_close == -1:
+                break
+
+            if next_open != -1 and next_open < next_close:
+                tag_end = group_html.find('>', next_open)
+                if tag_end != -1:
+                    depth += 1
+                pos = tag_end + 1 if tag_end != -1 else next_open + 1
+            else:
+                depth -= 1
+                pos = next_close + 6
+
+        if depth == 0:
+            news_html = group_html[start_pos:pos-6]
+
             # 提取排名
             rank_match = re.search(r'<span class="rank-num[^"]*">(\d+)</span>', news_html)
             rank = rank_match.group(1) if rank_match else ''
@@ -75,21 +156,28 @@ for group_html in word_groups_raw[:8]:  # 限制最多8个源
             title_match = re.search(r'<div class="news-title">.*?<a href="([^"]+)"[^>]*>(.*?)</a>.*?</div>', news_html, re.DOTALL)
             if title_match:
                 link = title_match.group(1).strip()
-                title = re.sub(r'<[^>]+>', '', title_match.group(2)).strip()  # 去除HTML标签
+                # 清理标题中的 HTML 标签
+                title = re.sub(r'<[^>]+>', '', title_match.group(2)).strip()
+                title = title.replace('\n', ' ').replace('\r', '').replace('\t', ' ')
+                title = re.sub(r'\s+', ' ', title)  # 合并多个空格
+
                 news_items.append({
                     'rank': rank,
                     'time': time_info,
                     'title': escape(title),
                     'link': escape(link),
-                    'is_new': 'new' in news_html
+                    'is_new': 'new' in item_start_match.group(0)
                 })
 
-        if news_items:
-            word_groups.append({
-                'name': escape(source_name),
-                'count': escape(news_count),
-                'items': news_items
-            })
+        idx = pos
+
+    if news_items:
+        word_groups.append({
+            'name': escape(source_name),
+            'count': escape(news_count),
+            'items': news_items[:15]  # 每个源最多15条
+        })
+        print(f"  - {source_name}: {len(news_items)} items")
 
 # 构建新闻内容 HTML
 news_content_html = ''
@@ -499,4 +587,4 @@ with open('source/daily-news/index.md', 'w', encoding='utf-8') as f:
     f.write(content)
 
 print(f'News page generated successfully at {update_time}')
-print(f'Parsed {len(word_groups)} news sources')
+print(f'Parsed {len(word_groups)} news sources with {sum(len(g["items"]) for g in word_groups)} total items')
