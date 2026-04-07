@@ -10,12 +10,17 @@ on:
         required: false
         default: ''
 
+permissions:
+  contents: write
+
 jobs:
   sync-news:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout blog repo
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Fetch latest news HTML
         id: fetch-news
