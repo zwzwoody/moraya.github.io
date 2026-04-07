@@ -20,11 +20,9 @@ jobs:
       - name: Fetch latest news HTML
         id: fetch-news
         run: |
-          # 获取今天的日期
           TODAY=$(date +%Y-%m-%d)
           echo "today=$TODAY" >> $GITHUB_OUTPUT
 
-          # 如果有传入 URL 则使用，否则构造默认 URL
           if [ -n "${{ github.event.inputs.news_url }}" ]; then
             NEWS_URL="${{ github.event.inputs.news_url }}"
           else
@@ -32,69 +30,69 @@ jobs:
           fi
 
           echo "Fetching news from: $NEWS_URL"
-
-          # 下载 HTML 文件
           curl -sL "$NEWS_URL" -o news-temp.html || echo "Failed to fetch $NEWS_URL"
 
-          # 检查是否成功获取
           if [ ! -s news-temp.html ] || [ "$(cat news-temp.html | wc -l)" -eq 0 ]; then
             echo "Failed to fetch news HTML"
             exit 1
           fi
 
           echo "Successfully fetched news HTML"
-          # 显示前 30 行用于调试
           head -30 news-temp.html
 
       - name: Update news page
         run: |
-          # 获取当前时间
           UPDATE_TIME=$(date '+%Y-%m-%d %H:%M:%S')
           TODAY=$(date +%Y-%m-%d)
 
-          # 读取 HTML 内容并进行 base64 编码（避免特殊字符问题）
-          NEWS_HTML_B64=$(base64 -w 0 news-temp.html)
+          # 使用 Python 生成文件（避免 shell heredoc 问题）
+          export UPDATE_TIME
+          export TODAY
 
-          # 创建页面头部
-          cat > source/daily-news/index.md << 'HEADER_EOF'
----
+          python3 -c "
+import os
+import html
+
+update_time = os.environ['UPDATE_TIME']
+today = os.environ['TODAY']
+
+with open('news-temp.html', 'r', encoding='utf-8') as f:
+    html_content = f.read()
+
+# 转义双引号并转为单行
+html_escaped = html_content.replace('\"', '\\\"').replace('\n', '\\n')
+
+content = f'''---
 title: 每日热点
-date: ${UPDATE_TIME}
-updated: ${UPDATE_TIME}
-type: "daily-news"
+date: {update_time}
+updated: {update_time}
+type: \"daily-news\"
 comments: false
 ---
 
-<div class="daily-news-wrapper">
-  <div class="news-meta">
-    <span class="news-date">📅 ${TODAY}</span>
-    <span class="update-time">🔄 更新时间: ${UPDATE_TIME}</span>
+<div class=\"daily-news-wrapper\">
+  <div class=\"news-meta\">
+    <span class=\"news-date\">📅 {today}</span>
+    <span class=\"update-time\">🔄 更新时间: {update_time}</span>
   </div>
 
-  <div class="news-iframe-container">
-    <iframe id="news-frame" srcdoc="HEADER_EOF
-
-          # 追加 HTML 内容（base64 解码后嵌入）
-          echo "$NEWS_HTML_B64" | base64 -d | sed 's/"/\\"/g' | sed ':a;N;$!ba;s/\n/\\n/g' >> source/daily-news/index.md
-
-          # 追加页面尾部
-          cat >> source/daily-news/index.md << 'FOOTER_EOF'
-" frameborder="0" scrolling="no"></iframe>
+  <div class=\"news-iframe-container\">
+    <iframe id=\"news-frame\" srcdoc=\"{html_escaped}\" frameborder=\"0\" scrolling=\"no\"></iframe>
   </div>
 
-  <div class="news-footer">
-    <p>数据来源：<a href="https://github.com/zwzwoody/trendradar" target="_blank">TrendRadar</a></p>
-    <p class="hint">此页面每日自动同步技术热榜新闻</p>
+  <div class=\"news-footer\">
+    <p>数据来源：<a href=\"https://github.com/zwzwoody/trendradar\" target=\"_blank\">TrendRadar</a></p>
+    <p class=\"hint\">此页面每日自动同步技术热榜新闻</p>
   </div>
 </div>
 
 <style>
-.daily-news-wrapper {
+.daily-news-wrapper {{
   max-width: 100%;
   margin: 0 auto;
-}
+}}
 
-.news-meta {
+.news-meta {{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -104,82 +102,66 @@ comments: false
   border-radius: 8px;
   color: white;
   font-size: 14px;
-}
+}}
 
-.news-date {
-  font-weight: 600;
-}
+.news-date {{ font-weight: 600; }}
+.update-time {{ opacity: 0.9; font-size: 13px; }}
 
-.update-time {
-  opacity: 0.9;
-  font-size: 13px;
-}
-
-.news-iframe-container {
+.news-iframe-container {{
   background: white;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 16px rgba(0,0,0,0.06);
-}
+}}
 
-#news-frame {
+#news-frame {{
   width: 100%;
   min-height: 800px;
   border: none;
-}
+}}
 
-.news-footer {
+.news-footer {{
   margin-top: 24px;
   padding-top: 20px;
   border-top: 1px solid #eee;
   text-align: center;
   font-size: 13px;
   color: #666;
-}
+}}
 
-.news-footer .hint {
-  margin-top: 8px;
-  color: #999;
-  font-size: 12px;
-}
+.news-footer .hint {{ margin-top: 8px; color: #999; font-size: 12px; }}
 
-[data-theme="dark"] .news-iframe-container {
-  background: #1a1a1a;
-}
-
-[data-theme="dark"] .news-footer {
-  border-top-color: #333;
-  color: #999;
-}
+[data-theme=\"dark\"] .news-iframe-container {{ background: #1a1a1a; }}
+[data-theme=\"dark\"] .news-footer {{ border-top-color: #333; color: #999; }}
 </style>
 
 <script>
-window.addEventListener('load', function() {
+window.addEventListener('load', function() {{
   var iframe = document.getElementById('news-frame');
-  if (iframe) {
-    try {
+  if (iframe) {{
+    try {{
       iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-    } catch(e) {
+    }} catch(e) {{
       iframe.style.height = '800px';
-    }
-  }
-});
+    }}
+  }}
+}});
 </script>
-FOOTER_EOF
+'''
 
-          # 替换日期变量
-          sed -i "s/\${UPDATE_TIME}/${UPDATE_TIME}/g" source/daily-news/index.md
-          sed -i "s/\${TODAY}/${TODAY}/g" source/daily-news/index.md
+with open('source/daily-news/index.md', 'w', encoding='utf-8') as f:
+    f.write(content)
 
-          echo "News page updated successfully"
+print('News page updated successfully')
+"
+
           echo "--- Preview ---"
-          head -30 source/daily-news/index.md
+          head -20 source/daily-news/index.md
 
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
           git add source/daily-news/index.md
 
           if git diff --staged --quiet; then
