@@ -27,7 +27,8 @@
       "Bash(taskkill /PID 43624 /F)",
       "Bash(cmd.exe /c \"taskkill /PID 43624 /F\")",
       "Bash(cmd.exe /c \"taskkill /PID 25652 /F\")",
-      "Bash(npx taskkill:*)"
+      "Bash(npx taskkill:*)",
+      "Bash(dir:*)"
     ]
   }
 }

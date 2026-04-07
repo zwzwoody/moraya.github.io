@@ -1,0 +1,187 @@
+name: Sync Daily News
+
+on:
+  repository_dispatch:
+    types: [sync-news]
+  workflow_dispatch:
+    inputs:
+      news_url:
+        description: '新闻 HTML 文件的 URL（可选，默认为 trendradar 最新）'
+        required: false
+        default: ''
+
+jobs:
+  sync-news:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout blog repo
+        uses: actions/checkout@v4
+
+      - name: Fetch latest news HTML
+        id: fetch-news
+        run: |
+          # 获取今天的日期
+          TODAY=$(date +%Y-%m-%d)
+          echo "today=$TODAY" >> $GITHUB_OUTPUT
+
+          # 如果有传入 URL 则使用，否则构造默认 URL
+          if [ -n "${{ github.event.inputs.news_url }}" ]; then
+            NEWS_URL="${{ github.event.inputs.news_url }}"
+          else
+            NEWS_URL="https://raw.githubusercontent.com/zwzwoody/trendradar/main/output/html/latest/daily.html"
+          fi
+
+          echo "Fetching news from: $NEWS_URL"
+
+          # 下载 HTML 文件
+          curl -sL "$NEWS_URL" -o news-temp.html || echo "Failed to fetch $NEWS_URL"
+
+          # 检查是否成功获取
+          if [ ! -s news-temp.html ] || [ "$(cat news-temp.html | wc -l)" -eq 0 ]; then
+            echo "Failed to fetch news HTML"
+            exit 1
+          fi
+
+          echo "Successfully fetched news HTML"
+          # 显示前 30 行用于调试
+          head -30 news-temp.html
+
+      - name: Update news page
+        run: |
+          # 获取当前时间
+          UPDATE_TIME=$(date '+%Y-%m-%d %H:%M:%S')
+          TODAY=$(date +%Y-%m-%d)
+
+          # 读取 HTML 内容
+          NEWS_HTML=$(cat news-temp.html)
+
+          # 创建新的页面内容 - 直接嵌入完整的 HTML
+          cat > source/daily-news/index.md << EOF
+---
+title: 每日热点
+date: ${UPDATE_TIME}
+updated: ${UPDATE_TIME}
+type: "daily-news"
+comments: false
+---
+
+<div class="daily-news-wrapper">
+  <div class="news-meta">
+    <span class="news-date">📅 ${TODAY}</span>
+    <span class="update-time">🔄 更新时间: ${UPDATE_TIME}</span>
+  </div>
+
+  <div class="news-iframe-container">
+    <iframe id="news-frame" srcdoc="$(echo "$NEWS_HTML" | sed 's/"/\\"/g' | sed ':a;N;$!ba;s/\n/\\n/g')" frameborder="0" scrolling="no"></iframe>
+  </div>
+
+  <div class="news-footer">
+    <p>数据来源：<a href="https://github.com/zwzwoody/trendradar" target="_blank">TrendRadar</a></p>
+    <p class="hint">此页面每日自动同步技术热榜新闻</p>
+  </div>
+</div>
+
+<style>
+.daily-news-wrapper {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.news-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+}
+
+.news-date {
+  font-weight: 600;
+}
+
+.update-time {
+  opacity: 0.9;
+  font-size: 13px;
+}
+
+.news-iframe-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+}
+
+#news-frame {
+  width: 100%;
+  min-height: 800px;
+  border: none;
+}
+
+.news-footer {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+}
+
+.news-footer .hint {
+  margin-top: 8px;
+  color: #999;
+  font-size: 12px;
+}
+
+/* Dark mode support */
+[data-theme="dark"] .news-iframe-container {
+  background: #1a1a1a;
+}
+
+[data-theme="dark"] .news-footer {
+  border-top-color: #333;
+  color: #999;
+}
+</style>
+
+<script>
+// Auto-resize iframe based on content
+window.addEventListener('load', function() {
+  var iframe = document.getElementById('news-frame');
+  if (iframe) {
+    try {
+      iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+    } catch(e) {
+      // Cross-origin restrictions may prevent this
+      iframe.style.height = '800px';
+    }
+  }
+});
+</script>
+EOF
+
+          echo "News page updated successfully"
+          echo "--- Preview ---"
+          head -50 source/daily-news/index.md
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add source/daily-news/index.md
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "📰 Update daily news - $(date +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Trigger deploy
+        run: |
+          echo "News updated and committed."
+          echo "Deploy will run automatically if you have GitHub Pages configured."
