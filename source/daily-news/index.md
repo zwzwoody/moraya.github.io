@@ -1,7 +1,7 @@
 ---
 title: 每日热点
-date: 2026-04-07 15:23:15
-updated: 2026-04-07 15:23:15
+date: 2026-04-07 15:53:54
+updated: 2026-04-07 15:53:54
 type: "daily-news"
 comments: false
 ---
@@ -12,7 +12,7 @@ comments: false
       <h1 class="page-title">📰 每日热点</h1>
       <span class="news-date">2026-04-07</span>
     </div>
-    <span class="update-badge">🔄 更新于 2026-04-07 15:23:15</span>
+    <span class="update-badge">🔄 更新于 2026-04-07 15:53:54</span>
   </div>
 
   <div class="stats-bar"><div class="stat-item"><span class="stat-label">报告类型</span><span class="stat-value">全天汇总</span></div><div class="stat-item"><span class="stat-label">新闻总数</span><span class="stat-value">175 条</span></div><div class="stat-item"><span class="stat-label">热点新闻</span><span class="stat-value">59 条</span></div><div class="stat-item"><span class="stat-label">生成时间</span><span class="stat-value">04-07 20:26</span></div></div>
