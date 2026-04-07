@@ -21,7 +21,9 @@ jobs:
         id: fetch-news
         run: |
           TODAY=$(date +%Y-%m-%d)
+          UPDATE_TIME=$(date '+%Y-%m-%d %H:%M:%S')
           echo "today=$TODAY" >> $GITHUB_OUTPUT
+          echo "update_time=$UPDATE_TIME" >> $GITHUB_OUTPUT
 
           if [ -n "${{ github.event.inputs.news_url }}" ]; then
             NEWS_URL="${{ github.event.inputs.news_url }}"
@@ -41,48 +43,44 @@ jobs:
           head -30 news-temp.html
 
       - name: Update news page
+        env:
+          UPDATE_TIME: ${{ steps.fetch-news.outputs.update_time }}
+          TODAY: ${{ steps.fetch-news.outputs.today }}
         run: |
-          UPDATE_TIME=$(date '+%Y-%m-%d %H:%M:%S')
-          TODAY=$(date +%Y-%m-%d)
-
-          # 使用 Python 生成文件（避免 shell heredoc 问题）
-          export UPDATE_TIME
-          export TODAY
-
-          python3 -c "
+          # 使用 Python 生成文件
+          python3 << 'PYSCRIPT'
 import os
-import html
 
-update_time = os.environ['UPDATE_TIME']
-today = os.environ['TODAY']
+update_time = os.environ.get('UPDATE_TIME', '')
+today = os.environ.get('TODAY', '')
 
 with open('news-temp.html', 'r', encoding='utf-8') as f:
     html_content = f.read()
 
 # 转义双引号并转为单行
-html_escaped = html_content.replace('\"', '\\\"').replace('\n', '\\n')
+html_escaped = html_content.replace('"', '\\"').replace('\n', '\\n')
 
-content = f'''---
+content = f"""---
 title: 每日热点
 date: {update_time}
 updated: {update_time}
-type: \"daily-news\"
+type: "daily-news"
 comments: false
 ---
 
-<div class=\"daily-news-wrapper\">
-  <div class=\"news-meta\">
-    <span class=\"news-date\">📅 {today}</span>
-    <span class=\"update-time\">🔄 更新时间: {update_time}</span>
+<div class="daily-news-wrapper">
+  <div class="news-meta">
+    <span class="news-date">📅 {today}</span>
+    <span class="update-time">🔄 更新时间: {update_time}</span>
   </div>
 
-  <div class=\"news-iframe-container\">
-    <iframe id=\"news-frame\" srcdoc=\"{html_escaped}\" frameborder=\"0\" scrolling=\"no\"></iframe>
+  <div class="news-iframe-container">
+    <iframe id="news-frame" srcdoc="{html_escaped}" frameborder="0" scrolling="no"></iframe>
   </div>
 
-  <div class=\"news-footer\">
-    <p>数据来源：<a href=\"https://github.com/zwzwoody/trendradar\" target=\"_blank\">TrendRadar</a></p>
-    <p class=\"hint\">此页面每日自动同步技术热榜新闻</p>
+  <div class="news-footer">
+    <p>数据来源：<a href="https://github.com/zwzwoody/trendradar" target="_blank">TrendRadar</a></p>
+    <p class="hint">此页面每日自动同步技术热榜新闻</p>
   </div>
 </div>
 
@@ -131,8 +129,8 @@ comments: false
 
 .news-footer .hint {{ margin-top: 8px; color: #999; font-size: 12px; }}
 
-[data-theme=\"dark\"] .news-iframe-container {{ background: #1a1a1a; }}
-[data-theme=\"dark\"] .news-footer {{ border-top-color: #333; color: #999; }}
+[data-theme="dark"] .news-iframe-container {{ background: #1a1a1a; }}
+[data-theme="dark"] .news-footer {{ border-top-color: #333; color: #999; }}
 </style>
 
 <script>
@@ -147,13 +145,13 @@ window.addEventListener('load', function() {{
   }}
 }});
 </script>
-'''
+"""
 
 with open('source/daily-news/index.md', 'w', encoding='utf-8') as f:
     f.write(content)
 
 print('News page updated successfully')
-"
+PYSCRIPT
 
           echo "--- Preview ---"
           head -20 source/daily-news/index.md
