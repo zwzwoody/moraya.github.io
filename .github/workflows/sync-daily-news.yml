@@ -66,7 +66,12 @@ jobs:
             git push
           fi
 
-      - name: Trigger deploy
+      - name: Trigger Pages deployment
         run: |
-          echo "News updated and committed."
-          echo "Deploy will run automatically if you have GitHub Pages configured."
+          echo "Triggering Pages deployment..."
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/pages.yml/dispatches \
+            -d '{"ref":"main"}'
+          echo "Pages deployment triggered"
