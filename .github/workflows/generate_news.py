@@ -196,25 +196,25 @@ for group in word_groups:
         rank_html = f'<span class="rank-badge {rank_class}">{item["rank"]}</span>' if item['rank'] else ''
 
         items_html += f'''
-        <div class="news-item">
-          <div class="news-rank">{rank_html}</div>
-          <div class="news-body">
-            <a href="{item['link']}" target="_blank" class="news-title-link">{item['title']}</a>
-            {new_badge}
-            <span class="news-time">{item['time']}</span>
-          </div>
-        </div>'''
+<div class="news-item">
+<div class="news-rank">{rank_html}</div>
+<div class="news-body">
+<a href="{item['link']}" target="_blank" class="news-title-link">{item['title']}</a>
+{new_badge}
+<span class="news-time">{item['time']}</span>
+</div>
+</div>'''
 
     news_content_html += f'''
-    <div class="source-section">
-      <div class="source-header">
-        <span class="source-name">{group['name']}</span>
-        <span class="source-count">{group['count']}</span>
-      </div>
-      <div class="news-list">
-        {items_html}
-      </div>
-    </div>'''
+<div class="source-section">
+<div class="source-header">
+<span class="source-name">{group['name']}</span>
+<span class="source-count">{group['count']}</span>
+</div>
+<div class="news-list">
+{items_html}
+</div>
+</div>'''
 
 # 构建统计信息 HTML
 stats_html = ''
