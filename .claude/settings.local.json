@@ -30,7 +30,16 @@
       "Bash(npx taskkill:*)",
       "Bash(dir:*)",
       "Bash(python .github/workflows/generate_news.py:*)",
-      "WebFetch(domain:alanw.store)"
+      "WebFetch(domain:alanw.store)",
+      "Bash(python3:*)",
+      "Bash(export UPDATE_TIME=\"2026-04-10 09:28:28\")",
+      "Bash(export TODAY=\"2026-04-10\")",
+      "Bash(echo \"Error code: $?\")",
+      "Bash(git checkout:*)",
+      "Bash(python:*)",
+      "Bash(grep:*)",
+      "Bash(ls -la *.tmp *.temp)",
+      "Bash(ls -la *.html *.py)"
     ]
   }
 }

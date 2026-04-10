@@ -9,3 +9,9 @@ _multiconfig.yml
 .cursor
 /page-tmp
 nul
+
+# Temporary files from workflows
+news-temp.html
+*.tmp
+*.temp
+fix_*.py

@@ -4,8 +4,8 @@ from html import escape
 from html.parser import HTMLParser
 
 # 从环境变量读取时间信息
-update_time = os.environ.get('UPDATE_TIME', '')
-today = os.environ.get('TODAY', '')
+update_time = os.environ.get('UPDATE_TIME', '2026-04-10 09:28:28')
+today = os.environ.get('TODAY', '2026-04-10')
 
 # 检查 HTML 文件是否存在
 if not os.path.exists('news-temp.html'):
@@ -244,11 +244,7 @@ comments: false
 
 <div class="daily-news-wrapper">
   <div class="news-header-bar">
-    <div class="news-title-section">
-      <h1 class="page-title">📰 每日热点</h1>
-      <span class="news-date">{today}</span>
-    </div>
-    <span class="update-badge">🔄 更新于 {update_time}</span>
+    <span class="news-date">{today}</span>
   </div>
 
   {stats_html}
@@ -282,29 +278,9 @@ comments: false
   color: white;
 }}
 
-.news-title-section {{
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}}
-
-.page-title {{
-  margin: 0;
-  font-size: 24px;
-  font-weight: 700;
-}}
-
 .news-date {{
   font-size: 16px;
-  opacity: 0.9;
-}}
-
-.update-badge {{
-  font-size: 13px;
-  opacity: 0.85;
-  background: rgba(255,255,255,0.15);
-  padding: 6px 12px;
-  border-radius: 20px;
+  font-weight: 600;
 }}
 
 .stats-bar {{
@@ -555,15 +531,6 @@ comments: false
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
-  }}
-
-  .news-title-section {{
-    flex-direction: column;
-    gap: 8px;
-  }}
-
-  .page-title {{
-    font-size: 20px;
   }}
 
   .stats-bar {{

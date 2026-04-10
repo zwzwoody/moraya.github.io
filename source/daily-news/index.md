@@ -8,12 +8,7 @@ comments: false
 
 <div class="daily-news-wrapper">
   <div class="news-header-bar">
-    <div class="news-title-section">
-      <h1 class="page-title">📰 每日热点</h1>
-      <span class="news-date">2026-04-10</span>
-    </div>
-    <span class="update-badge">🔄 更新于 2026-04-10 09:28:28</span>
-  </div>
+    <span class="news-date">2026-04-10</span></div>
 
   <div class="stats-bar"><div class="stat-item"><span class="stat-label">报告类型</span><span class="stat-value">全天汇总</span></div><div class="stat-item"><span class="stat-label">新闻总数</span><span class="stat-value">176 条</span></div><div class="stat-item"><span class="stat-label">热点新闻</span><span class="stat-value">68 条</span></div><div class="stat-item"><span class="stat-label">生成时间</span><span class="stat-value">04-10 17:28</span></div></div>
 
@@ -637,29 +632,9 @@ comments: false
   color: white;
 }
 
-.news-title-section {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.page-title {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 700;
-}
-
 .news-date {
   font-size: 16px;
   opacity: 0.9;
-}
-
-.update-badge {
-  font-size: 13px;
-  opacity: 0.85;
-  background: rgba(255,255,255,0.15);
-  padding: 6px 12px;
-  border-radius: 20px;
 }
 
 .stats-bar {
@@ -910,15 +885,6 @@ comments: false
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
-  }
-
-  .news-title-section {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .page-title {
-    font-size: 20px;
   }
 
   .stats-bar {
