@@ -39,7 +39,8 @@
       "Bash(python:*)",
       "Bash(grep:*)",
       "Bash(ls -la *.tmp *.temp)",
-      "Bash(ls -la *.html *.py)"
+      "Bash(ls -la *.html *.py)",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ]
   }
 }

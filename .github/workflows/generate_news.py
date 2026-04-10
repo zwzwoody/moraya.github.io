@@ -30,6 +30,71 @@ if error_match:
   <span class="error-text">{error_msg}</span>
 </div>'''
 
+# 提取AI分析内容
+def extract_ai_analysis(html):
+    """提取AI分析区块内容"""
+    ai_section_match = re.search(r'<div class="ai-section">(.*?)</div>\s*</div>\s*</div>\s*(?=<div class="word-group"|$)', html, re.DOTALL)
+    if not ai_section_match:
+        # 尝试另一种匹配方式
+        ai_section_match = re.search(r'<div class="ai-section">(.*?)</div>\s*</div>\s*</div>', html, re.DOTALL)
+
+    if not ai_section_match:
+        return ''
+
+    ai_section_html = ai_section_match.group(1)
+
+    # 提取AI区块标题
+    ai_title_match = re.search(r'<div class="ai-section-title">([^<]+)</div>', ai_section_html)
+    ai_title = ai_title_match.group(1).strip() if ai_title_match else 'AI 深度分析'
+
+    # 提取AI徽章
+    ai_badge_match = re.search(r'<div class="ai-section-badge">([^<]+)</div>', ai_section_html)
+    ai_badge = ai_badge_match.group(1).strip() if ai_badge_match else 'AI'
+
+    # 提取所有ai-block
+    ai_blocks = []
+    block_pattern = r'<div class="ai-block">\s*<div class="ai-block-title">([^<]+)</div>\s*<div class="ai-block-content">(.*?)</div>\s*</div>'
+    for block_match in re.finditer(block_pattern, ai_section_html, re.DOTALL):
+        block_title = block_match.group(1).strip()
+        block_content = block_match.group(2).strip()
+        # 清理HTML标签
+        block_content = re.sub(r'<[^>]+>', '', block_content)
+        block_content = block_content.replace('\n', ' ').replace('\r', '').replace('\t', ' ')
+        block_content = re.sub(r'\s+', ' ', block_content)
+        ai_blocks.append({
+            'title': escape(block_title),
+            'content': escape(block_content)
+        })
+
+    if not ai_blocks:
+        return ''
+
+    # 构建AI分析HTML
+    blocks_html = ''
+    for block in ai_blocks:
+        blocks_html += f'''
+<div class="ai-analysis-block">
+<div class="ai-analysis-block-title">{block['title']}</div>
+<div class="ai-analysis-block-content">{block['content']}</div>
+</div>'''
+
+    ai_html = f'''
+<div class="ai-analysis-section">
+<div class="ai-analysis-header">
+<span class="ai-analysis-icon">🤖</span>
+<span class="ai-analysis-title-main">{escape(ai_title)}</span>
+<span class="ai-analysis-badge">{escape(ai_badge)}</span>
+</div>
+<div class="ai-analysis-content">
+{blocks_html}
+</div>
+</div>'''
+
+    return ai_html
+
+ai_analysis_html = extract_ai_analysis(html_content)
+print(f"AI analysis extracted: {'Yes' if ai_analysis_html else 'No'}")
+
 # 提取统计信息
 stats = {}
 stat_patterns = [
@@ -251,8 +316,10 @@ comments: false
 
   {error_html}
 
+  {ai_analysis_html}
+
   <div class="news-content">
-    {news_content_html}
+{news_content_html}
   </div>
 
   <div class="news-footer">
@@ -525,6 +592,83 @@ comments: false
   color: #9ca3af;
 }}
 
+/* AI分析区块样式 */
+.ai-analysis-section {{
+  margin-bottom: 28px;
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}}
+
+.ai-analysis-header {{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 24px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}}
+
+.ai-analysis-icon {{
+  font-size: 24px;
+}}
+
+.ai-analysis-title-main {{
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  flex: 1;
+}}
+
+.ai-analysis-badge {{
+  font-size: 11px;
+  font-weight: 700;
+  color: #a5b4fc;
+  background: rgba(99, 102, 241, 0.3);
+  padding: 4px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(99, 102, 241, 0.5);
+}}
+
+.ai-analysis-content {{
+  padding: 20px 24px;
+}}
+
+.ai-analysis-block {{
+  margin-bottom: 16px;
+  padding: 16px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  border-left: 3px solid #6366f1;
+}}
+
+.ai-analysis-block:last-child {{
+  margin-bottom: 0;
+}}
+
+.ai-analysis-block-title {{
+  font-size: 14px;
+  font-weight: 600;
+  color: #a5b4fc;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}}
+
+.ai-analysis-block-content {{
+  font-size: 15px;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.7;
+}}
+
+/* AI分析深色模式适配 */
+[data-theme="dark"] .ai-analysis-section {{
+  background: linear-gradient(135deg, #0f0d2e 0%, #1e1b4b 100%);
+  border-color: rgba(99, 102, 241, 0.3);
+}}
+
 /* 移动端适配 */
 @media (max-width: 640px) {{
   .news-header-bar {{
@@ -544,6 +688,22 @@ comments: false
 
   .news-time {{
     margin-left: auto;
+  }}
+
+  .ai-analysis-header {{
+    padding: 14px 18px;
+  }}
+
+  .ai-analysis-title-main {{
+    font-size: 16px;
+  }}
+
+  .ai-analysis-content {{
+    padding: 16px 18px;
+  }}
+
+  .ai-analysis-block {{
+    padding: 12px;
   }}
 }}
 </style>
