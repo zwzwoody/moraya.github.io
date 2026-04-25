@@ -1,17 +1,17 @@
 ---
 title: 每日热点
-date: 2026-04-24 01:17:58
-updated: 2026-04-24 01:17:58
+date: 2026-04-25 01:11:19
+updated: 2026-04-25 01:11:19
 type: "daily-news"
 comments: false
 ---
 
 <div class="daily-news-wrapper">
   <div class="news-header-bar">
-    <span class="news-date">2026-04-24</span>
+    <span class="news-date">2026-04-25</span>
   </div>
 
-  <div class="stats-bar"><div class="stat-item"><span class="stat-label">报告类型</span><span class="stat-value">全天汇总</span></div><div class="stat-item"><span class="stat-label">新闻总数</span><span class="stat-value">179 条</span></div><div class="stat-item"><span class="stat-label">热点新闻</span><span class="stat-value">72 条</span></div><div class="stat-item"><span class="stat-label">生成时间</span><span class="stat-value">04-24 09:17</span></div></div>
+  <div class="stats-bar"><div class="stat-item"><span class="stat-label">报告类型</span><span class="stat-value">全天汇总</span></div><div class="stat-item"><span class="stat-label">新闻总数</span><span class="stat-value">175 条</span></div><div class="stat-item"><span class="stat-label">热点新闻</span><span class="stat-value">77 条</span></div><div class="stat-item"><span class="stat-label">生成时间</span><span class="stat-value">04-25 09:10</span></div></div>
 
   
 
@@ -26,19 +26,19 @@ comments: false
 
 <div class="ai-analysis-block">
 <div class="ai-analysis-block-title">核心热点态势</div>
-<div class="ai-analysis-block-content">今日整体热度呈现圈层热点格局，各平台核心话题高度分化，缺乏跨平台共鸣的全网级事件，但各平台内部均指向AI技术快速渗透引发的产业生态重塑、开发者焦虑与资本博弈。宏观主线：AI从技术狂欢进入商业落地与权力再分配阶段，各方在定价权、数据控制权和人才激励上展开激烈博弈。微观领域：1. 资本与人才：DeepSeek用股权留人、马斯克薪酬提案的反复，揭示AI行业人才成本高企与资本对赌的残酷。2. AI定价权的争夺：OpenAI降价、国内模型按量计费、Copilot取消优惠，显示AI服务正从补贴走向收割。3. 地缘与安全：中美科技脱钩在AI合规（KYC风暴）与航空航天（中国航天70周年）领域持续深化。</div>
+<div class="ai-analysis-block-content">核心热点态势：整体呈现‘圈层分化’态势，IT之家与稀土掘金聚焦科技巨头竞赛（华为、微软、苹果），V2EX与参考消息则更偏重个人体验与地缘政治，缺乏一个连接所有平台的‘全网霸屏’级爆款。【宏观主线】：AI军备竞赛与商业化落地的双重焦虑。从DeepSeek-V4发布、GPT-5.5消息，到谷歌拟投资Anthropic、马斯克收购Cursor，巨头们疯狂砸钱抢占AI算力和应用入口；同时，开发者圈层正因API涨价、服务降级（Claude塌房、Copilot下架Opus）而弥漫着成本焦虑和转型压力。【微观领域】：1. 硬件为王与生态割裂：华为Pura X Max和MacBook Ultra的消息说明，终端硬件仍是巨头角逐的关键战场，且产品形态（折叠、OLED）愈发细分。2. 开发者生存危机：稀土掘金的‘Token都在涨价’、‘转型AI Agent指南’以及V2EX上的AI应用讨论，共同指向AI正在重塑开发者的技能栈和成本结构。</div>
 </div>
 <div class="ai-analysis-block">
 <div class="ai-analysis-block-title">舆论风向争议</div>
-<div class="ai-analysis-block-content">【情绪光谱】：技术社区（掘金、V2EX）弥漫着对AI工具涨价、数据收集和泡沫的警惕与焦虑，而主流科技媒体（IT之家）报道偏向乐观与宏大叙事。核心矛盾：1. 利益之争：AI服务商（OpenAI、国内模型厂）与开发者、用户之间的定价权与数据主权冲突，表现为“Token涨价”与“数据收集引发不满”。2. 认知之争：关于AI代码质量，部分开发者认为AI生成代码是“屎山”，另一部分则鼓吹Agent效率革命，反映出工具依赖与技术底线的认知鸿沟。</div>
+<div class="ai-analysis-block-content">【情绪光谱】：理性社区（V2EX、稀土掘金）内弥漫着‘技术乐观主义’与‘残酷生存现实’的反差。一边是为DeepSeek-V4的突破喝彩，一边是因Claude、Qwen等涨价而抱怨‘人比Token便宜’。主流媒体（IT之家）则保持冷漠旁观。【核心矛盾】：1. 利益冲突：AI公司（如OpenAI、Google）追求盈利而涨价，与开发者（终端用户）想控制成本之间的矛盾。2. 认知分歧：业内人士（掘金）将AI视为‘硬件资源竞赛’（算力中心），而普通用户（V2EX）更多将其视为‘价格敏感型工具’，对底层技术变革感知弱。</div>
 </div>
 <div class="ai-analysis-block">
 <div class="ai-analysis-block-title">异动与弱信号</div>
-<div class="ai-analysis-block-content">【跨平台温差】：同一议题在不同平台冷热不均。例如，Claude-4.7与KYC风暴在掘金是头条，但在IT之家和参考消息无任何覆盖，说明此事件在泛科技圈未破圈，属于垂直技术社区的自嗨与焦虑。OpenAI降价新闻在IT之家排名第19，而在掘金被Token涨价讨论淹没，说明从业者关注商业影响而非技术参数。【轨迹突变】：数据为单一时间点快照，无历史轨迹对比，无法判定急升或衰退，但各平台排名首位事件（DeepSeek融资、订阅斩、Claude与KYC）均可视为当前平台的焦点。【弱信号捕捉】：“小米腾讯Token Plan坑点”在V2EX排名13，反映用户对国内厂商定价策略的不满情绪正从吐槽升级为实际行动（如开发替代工具），这是品牌口碑危机的早期信号。</div>
+<div class="ai-analysis-block-content">【跨平台温差】：强温差！‘DeepSeek-V4发布’在IT之家（排名16）和稀土掘金（排名16）均上榜，但在V2EX仅作为用户个人感慨出现（排名14），说明该话题在科技媒体圈和开发者圈层均为热点，但在更广泛的大众舆论场（如参考消息）‘缺位’，是典型的圈层狂欢，尚未破圈。【轨迹突变】：所有数据均为单次快照（09:10），缺乏时间轴变化。但从排名位置看，‘稚晖君摇人’（稀土掘金排名5）和‘记一次QQ被盗’（V2EX排名5）在各自平台首页高位，暗示这两个话题可能在社群内引发过陡峭的讨论曲线。【弱信号捕捉】：马斯克的动作值得关注。他既推进独立聊天应用XChat（IT之家排名17），又收购Cursor（稀土掘金排名13），信号指向他正在试图打通‘社交+AI工具’的闭环，构建超级应用生态。</div>
 </div>
 <div class="ai-analysis-block">
 <div class="ai-analysis-block-title">研判策略建议</div>
-<div class="ai-analysis-block-content">1. 投资者：警惕AI概念股的估值泡沫，焦点应从纯技术能力转向商业化变现能力与用户留存；重点关注具备数据壁垒（如苹果生态、DeepSeek人才激励）的公司。2. 品牌方：AI服务厂商需警惕涨价引发的用户离心力，应明确数据使用边界并优化付费模型，避免因“薅羊毛”手法招致开发者社区集体抵制。3. 公众：开发者和个人用户应加速掌握AI Agent和工具链，主动适应“AI编程+传统架构”的混合开发模式，但需坚守代码质量底线，避免成为“提示词工程师”而被替代。</div>
+<div class="ai-analysis-block-content">1. 投资者：警惕AI‘军备竞赛’带来的估值泡沫，但可关注被低估的‘卖铲人’（如AWS/Graviton核心的AI基础设施）。重点关注马斯克的‘社交+AI工具’生态整合（XChat+Cursor），这可能是下一个增长点。2. 品牌方：华为Pura X Max发布是借势良机，但需避免陷入‘高价折叠屏’的炫富叙事，可转向‘阔折叠的商务与效率场景’。对于AI公司，需做好用户对‘涨价’负面舆情的应急预案。3. 公众：若你是技术从业者，现在必须启动向AI Agent或AI工程化的转型；若你是普通用户，‘AI+硬件’（如华为耳机手表、MacBook Ultra）正在成为新的生活和工作载体，值得关注。</div>
 </div>
 </div>
 </div>
@@ -48,241 +48,128 @@ comments: false
 <div class="source-section">
 <div class="source-header">
 <span class="source-name">IT之家</span>
-<span class="source-count">14 条</span>
+<span class="source-count">17 条</span>
 </div>
 <div class="news-list">
 
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge top">1</span></div>
 <div class="news-body">
-<a href="https://www.ithome.com/0/942/862.htm" target="_blank" class="news-title-link">《金融时报》曝光 DeepSeek 融资细节：旨在留住以股票期权作为薪酬的员工</a>
+<a href="https://www.ithome.com/0/943/394.htm" target="_blank" class="news-title-link">华为 Pura X Max 开售：行业首款横向阔折叠手机，10999 元起</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge top">2</span></div>
+<div class="news-body">
+<a href="https://www.ithome.com/0/943/393.htm" target="_blank" class="news-title-link">华为 WATCH Buds 2 耳机手表二合一首销：钛合金表体、3000 尼特峰值亮度，3488 元起</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">6</span></div>
 <div class="news-body">
-<a href="https://www.ithome.com/0/942/856.htm" target="_blank" class="news-title-link">中国航天事业创建 70 周年，北斗、新一代载人飞船最新“剧透”</a>
+<a href="https://www.ithome.com/0/943/388.htm" target="_blank" class="news-title-link">微软调整 Win11 更新机制：初始设置可跳过强制更新，无限次延长更新暂停期</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
-<div class="news-rank"><span class="rank-badge ">7</span></div>
+<div class="news-rank"><span class="rank-badge ">9</span></div>
 <div class="news-body">
-<a href="https://www.ithome.com/0/942/854.htm" target="_blank" class="news-title-link">苹果联合立讯精密、比亚迪等反对 GHGP 强制要求企业按小时匹配电力消耗与清洁能源</a>
+<a href="https://www.ithome.com/0/943/385.htm" target="_blank" class="news-title-link">微软推送 Win11 26220.8283/26300.8289 预览版：优化打印体验、改善开始菜单</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge ">10</span></div>
-<div class="news-body">
-<a href="https://www.ithome.com/0/942/850.htm" target="_blank" class="news-title-link">豆包上线“帮你选”功能，与抖音电商实现交易闭环</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">11</span></div>
 <div class="news-body">
-<a href="https://www.ithome.com/0/942/849.htm" target="_blank" class="news-title-link">马斯克：长期来看，特斯拉唯一“人驾”车型就是全新 Roadster</a>
+<a href="https://www.ithome.com/0/943/383.htm" target="_blank" class="news-title-link">微软发布 Win11 Experimental 29576.1000 预览版：简化系统恢复、更新音量滑块</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">12</span></div>
 <div class="news-body">
-<a href="https://www.ithome.com/0/942/848.htm" target="_blank" class="news-title-link">Perplexity CEO 称 AI 越强苹果 iPhone 越重要，个人数据构筑核心壁垒</a>
+<a href="https://www.ithome.com/0/943/382.htm" target="_blank" class="news-title-link">微软发布 Win11 26H1 28200.1873 预览版：重构语音输入界面、优化磁盘管理</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
-<div class="news-rank"><span class="rank-badge ">13</span></div>
+<div class="news-rank"><span class="rank-badge ">15</span></div>
 <div class="news-body">
-<a href="https://www.ithome.com/0/942/847.htm" target="_blank" class="news-title-link">美国娱乐行业格局迎“巨震”，派拉蒙 1100 亿美元收购华纳兄弟方案获批</a>
+<a href="https://www.ithome.com/0/943/379.htm" target="_blank" class="news-title-link">既合作又竞争，谷歌拟向 Anthropic 投资至高 400 亿美元</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge ">14</span></div>
-<div class="news-body">
-<a href="https://www.ithome.com/0/942/846.htm" target="_blank" class="news-title-link">中国移动“天通 + 北斗”双星通信服务在全国上线，31 款机型已支持</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge ">19</span></div>
-<div class="news-body">
-<a href="https://www.ithome.com/0/942/841.htm" target="_blank" class="news-title-link">OpenAI 最智能 AI 模型：GPT-5.5 登场，Token 成本降至 1/35、每兆瓦输出提升 50 倍</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge ">22</span></div>
-<div class="news-body">
-<a href="https://www.ithome.com/0/942/838.htm" target="_blank" class="news-title-link">IT早报 0424：华为乾崑智驾 ADS 5 发布；苹果 iPhone 18 Pro Max 金属机模曝光；去机顶盒，一体化电视全国推广启动；爱奇艺回应暂停页广告“不当内容争议”...</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge ">24</span></div>
-<div class="news-body">
-<a href="https://www.ithome.com/0/942/836.htm" target="_blank" class="news-title-link">古尔曼称苹果拓展可穿戴 / 智能家居赛道，将推 AI AirPods 等 6 大新品</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge ">27</span></div>
-<div class="news-body">
-<a href="https://www.ithome.com/0/942/833.htm" target="_blank" class="news-title-link">日本福岛核事故反应堆内部测得“极高”水平核辐射</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge ">28</span></div>
-<div class="news-body">
-<a href="https://www.ithome.com/0/942/832.htm" target="_blank" class="news-title-link">马斯克 560 亿美元薪酬恢复后，特斯拉撤销其 290 亿美元临时薪酬方案</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge ">29</span></div>
-<div class="news-body">
-<a href="https://www.ithome.com/0/942/831.htm" target="_blank" class="news-title-link">比亚迪腾势 N8L 闪充版汽车内饰公布：Nappa 云感舒压座椅、二排娱乐屏等</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-</div>
-</div>
-<div class="source-section">
-<div class="source-header">
-<span class="source-name">稀土掘金</span>
-<span class="source-count">14 条</span>
-</div>
-<div class="news-list">
-
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge top">2</span></div>
-<div class="news-body">
-<a href="https://juejin.cn/post/7630724767642533922" target="_blank" class="news-title-link">Claude-4.7与KYC风暴-中国AI从业者何去何从</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge top">3</span></div>
-<div class="news-body">
-<a href="https://juejin.cn/post/7631027768982503478" target="_blank" class="news-title-link">Copilot 下架 opus ，Qwen 开始按量计费，GLM 限制非代码使用，Token都在涨价，人还比 Token 便宜吗？</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge ">6</span></div>
-<div class="news-body">
-<a href="https://juejin.cn/post/7630298684078243891" target="_blank" class="news-title-link">管理后台框架 AI 时代的版本答案，Fantastic-admin 6.0 它来了！</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge ">7</span></div>
-<div class="news-body">
-<a href="https://juejin.cn/post/7630020855679057935" target="_blank" class="news-title-link">Flutter 3.41.7 ，小版本但 iOS 大修复，看完只想说：这是人能写出来的 bug ？</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge ">10</span></div>
-<div class="news-body">
-<a href="https://juejin.cn/post/7631311804195471396" target="_blank" class="news-title-link">稚晖君又开始摇人了，有点猛啊！</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge ">11</span></div>
-<div class="news-body">
-<a href="https://juejin.cn/post/7630031645626826803" target="_blank" class="news-title-link">告别 IDE？Android CLI 来了，开发进入 AI Agent 时代</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">16</span></div>
 <div class="news-body">
-<a href="https://juejin.cn/post/7630298684077391923" target="_blank" class="news-title-link">Android 开发快 3 倍！Google 说的</a>
+<a href="https://www.ithome.com/0/943/378.htm" target="_blank" class="news-title-link">IT早报 0425：曝苹果 iPhone 18 标准版配 12GB 内存；2026 北京车展开幕；DeepSeek-V4 预览版正式发布；OpenAI 发布 GPT5.5...</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">17</span></div>
 <div class="news-body">
-<a href="https://juejin.cn/post/7631020803657269248" target="_blank" class="news-title-link">AI 生成的代码都是一坨屎？聊聊怎么给 Agent 制定工程约束</a>
+<a href="https://www.ithome.com/0/943/377.htm" target="_blank" class="news-title-link">马斯克推进超级应用，独立聊天应用 XChat 上线</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">18</span></div>
 <div class="news-body">
-<a href="https://juejin.cn/post/7631400784476831794" target="_blank" class="news-title-link">Claude 塌房实锤：Pro 用户可能连 Claude Code 都不配用了</a>
+<a href="https://www.ithome.com/0/943/376.htm" target="_blank" class="news-title-link">美国法院批准初步禁令：前苹果首席设计官伊夫和 OpenAI 奥尔特曼的 AI 硬件项目禁止使用 io 品牌</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
-<div class="news-rank"><span class="rank-badge ">22</span></div>
+<div class="news-rank"><span class="rank-badge ">19</span></div>
 <div class="news-body">
-<a href="https://juejin.cn/post/7630298684077310003" target="_blank" class="news-title-link">从 0 到 1 搭建 RAG 应用：用 LangChain + Chroma + qwen-plus 实现《红楼梦》问答</a>
+<a href="https://www.ithome.com/0/943/375.htm" target="_blank" class="news-title-link">古尔曼：苹果正研发 MacBook Ultra，外观重大升级、首搭 OLED 屏幕</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
-<div class="news-rank"><span class="rank-badge ">23</span></div>
+<div class="news-rank"><span class="rank-badge ">20</span></div>
 <div class="news-body">
-<a href="https://juejin.cn/post/7631498231743103017" target="_blank" class="news-title-link">为什么 Github Copilot 要收集你数据，也是 AI 订阅以前便宜的原因</a>
+<a href="https://www.ithome.com/0/943/374.htm" target="_blank" class="news-title-link">提升 50%，消息称苹果 iPhone 18 标准版配 12GB 内存</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge ">24</span></div>
-<div class="news-body">
-<a href="https://juejin.cn/post/7631624091740553231" target="_blank" class="news-title-link">马斯克把 Cursor 给收了</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">25</span></div>
 <div class="news-body">
-<a href="https://juejin.cn/post/7631007870080073770" target="_blank" class="news-title-link">2026年前端开发工程师转型AI Agent开发工程师全指南</a>
+<a href="https://www.ithome.com/0/943/368.htm" target="_blank" class="news-title-link">时隔 6 个月，英伟达市值再次突破 5 万亿美元</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">26</span></div>
 <div class="news-body">
-<a href="https://juejin.cn/post/7630839350435086386" target="_blank" class="news-title-link">我做了个AI项目后才发现：会做事的人，正在输给会讲故事的人</a>
+<a href="https://www.ithome.com/0/943/367.htm" target="_blank" class="news-title-link">陈立武：英特尔 14A 节点成熟度与良率优于 18A 同期，特斯拉 Terafab 项目确定采用 14A 工艺</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge ">28</span></div>
+<div class="news-body">
+<a href="https://www.ithome.com/0/943/362.htm" target="_blank" class="news-title-link">曝微软计划年内将更多《使命召唤》旧作加入 XGP</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 </div>
@@ -290,120 +177,112 @@ comments: false
 <div class="source-section">
 <div class="source-header">
 <span class="source-name">V2EX</span>
-<span class="source-count">14 条</span>
+<span class="source-count">13 条</span>
 </div>
 <div class="news-list">
 
 <div class="news-item">
-<div class="news-rank"><span class="rank-badge top">2</span></div>
+<div class="news-rank"><span class="rank-badge high">5</span></div>
 <div class="news-body">
-<a href="https://www.v2ex.com/t/1208120" target="_blank" class="news-title-link">我做了一个叫「订阅斩」的 iOS App，专门对付那些悄悄扣钱的订阅</a>
+<a href="https://www.v2ex.com/t/1208400" target="_blank" class="news-title-link">记一次 QQ 被盗事件记录</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge ">6</span></div>
+<div class="news-body">
+<a href="https://www.v2ex.com/t/1208399" target="_blank" class="news-title-link">EzRemove AI - Free Background Remover Online 2026</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">7</span></div>
 <div class="news-body">
-<a href="https://www.v2ex.com/t/1208128" target="_blank" class="news-title-link">做了一个 AI 头像生成器，可以免费生成 2 次</a>
+<a href="https://www.v2ex.com/t/1208396" target="_blank" class="news-title-link">aisaysme.com 欢迎来说说你被 AI 评成了什么人设</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">9</span></div>
 <div class="news-body">
-<a href="https://www.v2ex.com/t/1208124" target="_blank" class="news-title-link">一个将苹果健康 APP 数据导出的工具，然后把你的数据喂给 AI 分析</a>
+<a href="https://www.v2ex.com/t/1208252" target="_blank" class="news-title-link">性爱机器人的诞生合理吗？</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">10</span></div>
 <div class="news-body">
-<a href="https://www.v2ex.com/t/1208123" target="_blank" class="news-title-link">CPA CLIProxyAPI 被 Windows 提示病毒</a>
+<a href="https://www.v2ex.com/t/1208128" target="_blank" class="news-title-link">做了一个 AI 头像生成器，可以免费生成 2 次</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
-<div class="news-rank"><span class="rank-badge ">11</span></div>
+<div class="news-rank"><span class="rank-badge ">12</span></div>
 <div class="news-body">
-<a href="https://www.v2ex.com/t/1208119" target="_blank" class="news-title-link">Google AI Ultra 又搞事情， AI credits 直接砍半</a>
+<a href="https://www.v2ex.com/t/1208391" target="_blank" class="news-title-link">性价比高的 AI 有推荐的吗？</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge ">13</span></div>
-<div class="news-body">
-<a href="https://www.v2ex.com/t/1208104" target="_blank" class="news-title-link">小米和腾讯 Token Plan 最坑的就是即便命中缓存依旧正常算 Token</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">14</span></div>
 <div class="news-body">
-<a href="https://www.v2ex.com/t/1208101" target="_blank" class="news-title-link">喜欢自己洗车的朋友们，我用 ai 做了一款洗车小程序 -- 洗车志</a>
+<a href="https://www.v2ex.com/t/1208383" target="_blank" class="news-title-link">说句冒犯的话， DeepSeek V4 Pro 让我有点破防！</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
-<div class="news-rank"><span class="rank-badge ">17</span></div>
+<div class="news-rank"><span class="rank-badge ">15</span></div>
 <div class="news-body">
-<a href="https://www.v2ex.com/t/1208095" target="_blank" class="news-title-link">用 AI 开发熊孩子自律的小程序</a>
+<a href="https://www.v2ex.com/t/1208381" target="_blank" class="news-title-link">用 Claude 做了视频“关于 ping0.cc 静默上传用户真实 IP”</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
-<div class="news-rank"><span class="rank-badge ">22</span></div>
+<div class="news-rank"><span class="rank-badge ">16</span></div>
 <div class="news-body">
-<a href="https://www.v2ex.com/t/1208079" target="_blank" class="news-title-link">[Video Companion]一个 chrome 插件，解决大多对视频操作的需求~欢迎使用提 bug</a>
+<a href="https://www.v2ex.com/t/1208378" target="_blank" class="news-title-link">AI 辅助英语学习，无推广，讨论一下</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
-<div class="news-rank"><span class="rank-badge ">23</span></div>
+<div class="news-rank"><span class="rank-badge ">20</span></div>
 <div class="news-body">
-<a href="https://www.v2ex.com/t/1208077" target="_blank" class="news-title-link">AI 时代，做产品简单了，把产品推广出去却变的更难了~</a>
+<a href="https://www.v2ex.com/t/1208366" target="_blank" class="news-title-link">确定必须需要 claude code 的 max 版本吗？</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
-<div class="news-rank"><span class="rank-badge ">26</span></div>
+<div class="news-rank"><span class="rank-badge ">21</span></div>
 <div class="news-body">
-<a href="https://www.v2ex.com/t/1208069" target="_blank" class="news-title-link">vibe coding 一个 ai 生成壁纸的网站</a>
+<a href="https://www.v2ex.com/t/1208364" target="_blank" class="news-title-link">chrome dev tools console 里这个 AI 有啥场景用</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">27</span></div>
 <div class="news-body">
-<a href="https://www.v2ex.com/t/1208066" target="_blank" class="news-title-link">免 ROOT 强力卸载安卓广告软件</a>
+<a href="https://www.v2ex.com/t/1208347" target="_blank" class="news-title-link">这种图片是 ai 如何生成的呀？</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge ">29</span></div>
-<div class="news-body">
-<a href="https://www.v2ex.com/t/1208060" target="_blank" class="news-title-link">[开源] Codeg V0.10：专注于代码生成的多智能体 IDE（cc、codex、gemini、opencode……），新版本重构了工作区，飞一般的体验，支持桌面端、服务器部署</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">30</span></div>
 <div class="news-body">
-<a href="https://www.v2ex.com/t/1208059" target="_blank" class="news-title-link">老婆嫌鼻型不完美？我做个医美 AI，帮你一键分析变美效果！</a>
+<a href="https://www.v2ex.com/t/1208331" target="_blank" class="news-title-link">从自身的需求出发，做了一个使用 Tag 管理账单的 iOS 记账应用</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 </div>
@@ -411,104 +290,217 @@ comments: false
 <div class="source-section">
 <div class="source-header">
 <span class="source-name">参考消息</span>
-<span class="source-count">12 条</span>
+<span class="source-count">13 条</span>
 </div>
 <div class="news-list">
 
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge top">3</span></div>
 <div class="news-body">
-<a href="https://ckxxapp.ckxx.net/pages/2026/04/23/641121afb0d24f9c87e294c406172625.html" target="_blank" class="news-title-link">巴西反制性吊销美国警员工作证</a>
+<a href="https://ckxxapp.ckxx.net/pages/2026/04/24/7d071ffa18114a6cadeb4ed8478f8555.html" target="_blank" class="news-title-link">特朗普称赞英国国王“了不起”</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge high">5</span></div>
 <div class="news-body">
-<a href="https://ckxxapp.ckxx.net/pages/2026/04/23/9c643286163e4cf6b88cca22031f7108.html" target="_blank" class="news-title-link">台媒：非洲三国基于一个中国原则取消赖清德飞航许可</a>
+<a href="https://ckxxapp.ckxx.net/pages/2026/04/24/cf6cc70e401a4b57ab34992f3469f3e6.html" target="_blank" class="news-title-link">外媒：美国司法部监察机构将调查爱泼斯坦档案公开情况</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
-<div class="news-rank"><span class="rank-badge ">6</span></div>
+<div class="news-rank"><span class="rank-badge ">8</span></div>
 <div class="news-body">
-<a href="https://ckxxapp.ckxx.net/pages/2026/04/23/45e188f7e4634291bb81781b72a4773b.html" target="_blank" class="news-title-link">泽连斯基抱怨伊朗战争令美国注意力转移</a>
+<a href="https://ckxxapp.ckxx.net/pages/2026/04/24/30e3f9387e4a4921941d9832dc823a01.html" target="_blank" class="news-title-link">菲律宾总统将访问日本</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
-<div class="news-rank"><span class="rank-badge ">11</span></div>
+<div class="news-rank"><span class="rank-badge ">10</span></div>
 <div class="news-body">
-<a href="https://ckxxapp.ckxx.net/pages/2026/04/23/e1e4d8755707456f93f82f9fa94b93f7.html" target="_blank" class="news-title-link">美媒：美国司法部与特朗普2016年竞选助理达成和解</a>
+<a href="https://ckxxapp.ckxx.net/pages/2026/04/24/1774d8a5d12c4812a174f9b7043c0928.html" target="_blank" class="news-title-link">中国影片《劳途归巢》获莫斯科国际电影节最佳纪录片奖</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">13</span></div>
 <div class="news-body">
-<a href="https://ckxxapp.ckxx.net/pages/2026/04/23/fe3a9af4b8a14b929daacf94ab81c344.html" target="_blank" class="news-title-link">俄媒：克宫希望美国继续就乌克兰问题进行调停</a>
+<a href="https://ckxxapp.ckxx.net/pages/2026/04/24/d29e91d4b24e4b1faa398a8ee7b26c6e.html" target="_blank" class="news-title-link">汉诺威工业博览会显示：人工智能正以超预期速度改变工厂</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge ">15</span></div>
+<div class="news-body">
+<a href="https://ckxxapp.ckxx.net/pages/2026/04/24/a8dbbfaa2a15460c8aba4fba64c62fb5.html" target="_blank" class="news-title-link">港媒：中国小城如何“塑造”现代世界？</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">17</span></div>
 <div class="news-body">
-<a href="https://ckxxapp.ckxx.net/pages/2026/04/23/1c815e01e4d34663975053193ff6c28c.html" target="_blank" class="news-title-link">外媒：美国编制北约盟友“好坏名单”</a>
+<a href="https://ckxxapp.ckxx.net/pages/2026/04/24/00fe3337be2e4ace9245ae25f2d89dda.html" target="_blank" class="news-title-link">美媒：美国人对特朗普不满意率创第二任期新高</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
-<div class="news-rank"><span class="rank-badge ">21</span></div>
+<div class="news-rank"><span class="rank-badge ">18</span></div>
 <div class="news-body">
-<a href="https://ckxxapp.ckxx.net/pages/2026/04/23/98e4060d686744ffa7b83c6bc7cae94b.html" target="_blank" class="news-title-link">美媒：美国海军部长突然离职</a>
+<a href="https://ckxxapp.ckxx.net/pages/2026/04/24/98f029442908431fbec4d0eb4f7e55c6.html" target="_blank" class="news-title-link">以色列：等待美国“开绿灯”重启对伊朗战争</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">22</span></div>
 <div class="news-body">
-<a href="https://ckxxapp.ckxx.net/pages/2026/04/23/1c92b201d9b84ca69c1616b2f5d1955d.html" target="_blank" class="news-title-link">日本专家：特朗普延长停战“等同于承认错误”</a>
+<a href="https://ckxxapp.ckxx.net/pages/2026/04/24/93dce0899bc14d29b5239dd51f67b682.html" target="_blank" class="news-title-link">德媒：用AI制作微短剧在中国引争议</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
-<div class="news-rank"><span class="rank-badge ">25</span></div>
+<div class="news-rank"><span class="rank-badge ">23</span></div>
 <div class="news-body">
-<a href="https://ckxxapp.ckxx.net/pages/2026/04/23/6afa1fd0661e490bb8fb043f48467692.html" target="_blank" class="news-title-link">美媒：北京人形机器人马拉松意味着什么？</a>
+<a href="https://ckxxapp.ckxx.net/pages/2026/04/24/821a4981975c421a8aaedf77a8337a77.html" target="_blank" class="news-title-link">英国商界领袖：英“不能自行断绝”对华贸易机会</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge ">26</span></div>
-<div class="news-body">
-<a href="https://ckxxapp.ckxx.net/pages/2026/04/23/303e6af533594c7da5c2c0f5f5e4aa81.html" target="_blank" class="news-title-link">外媒：广交会凸显中国出口结构向价值链上游转移</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">27</span></div>
 <div class="news-body">
-<a href="https://ckxxapp.ckxx.net/pages/2026/04/23/b5f2c961497847ec8a35e567ade6ffd1.html" target="_blank" class="news-title-link">日媒：中国人形机器人迈向“应用元年”</a>
+<a href="https://ckxxapp.ckxx.net/pages/2026/04/24/9ce9f9825d0b417a983de19fe646c62a.html" target="_blank" class="news-title-link">英媒文章：为什么美国人不再爱以色列？</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">28</span></div>
 <div class="news-body">
-<a href="https://ckxxapp.ckxx.net/pages/2026/04/23/11053f31dd894e7db7140ebc3512a3b8.html" target="_blank" class="news-title-link">澳媒：中国欲推动“兴趣消费”产业化</a>
+<a href="https://ckxxapp.ckxx.net/pages/2026/04/24/11563603083c4546ae5dfb3d996e47c2.html" target="_blank" class="news-title-link">火锅、奶茶和运动服：中国新出口产品走向世界</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge ">30</span></div>
+<div class="news-body">
+<a href="https://ckxxapp.ckxx.net/pages/2026/04/24/60af611229a241b892b495d5e7fef04f.html" target="_blank" class="news-title-link">外媒关注：中国机器人应用研发瞄准干家务</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+</div>
+</div>
+<div class="source-section">
+<div class="source-header">
+<span class="source-name">稀土掘金</span>
+<span class="source-count">12 条</span>
+</div>
+<div class="news-list">
+
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge top">1</span></div>
+<div class="news-body">
+<a href="https://juejin.cn/post/7631027768982503478" target="_blank" class="news-title-link">Copilot 下架 opus ，Qwen 开始按量计费，GLM 限制非代码使用，Token都在涨价，人还比 Token 便宜吗？</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge high">5</span></div>
+<div class="news-body">
+<a href="https://juejin.cn/post/7631311804195471396" target="_blank" class="news-title-link">稚晖君又开始摇人了，有点猛啊！</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge ">11</span></div>
+<div class="news-body">
+<a href="https://juejin.cn/post/7631400784476831794" target="_blank" class="news-title-link">Claude 塌房实锤：Pro 用户可能连 Claude Code 都不配用了</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge ">12</span></div>
+<div class="news-body">
+<a href="https://juejin.cn/post/7631007870080073770" target="_blank" class="news-title-link">2026年前端开发工程师转型AI Agent开发工程师全指南</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge ">13</span></div>
+<div class="news-body">
+<a href="https://juejin.cn/post/7631624091740553231" target="_blank" class="news-title-link">马斯克把 Cursor 给收了</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge ">15</span></div>
+<div class="news-body">
+<a href="https://juejin.cn/post/7631687888721133620" target="_blank" class="news-title-link">2026年AI编程工具对比：谁最值得用？</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge ">16</span></div>
+<div class="news-body">
+<a href="https://juejin.cn/post/7632156929691893795" target="_blank" class="news-title-link">最新：DeepSeek V4 国产大模型之光，万亿参数重构 AI 格局，让国产大模型迈入普惠新纪元</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge ">18</span></div>
+<div class="news-body">
+<a href="https://juejin.cn/post/7631832575604129811" target="_blank" class="news-title-link">国产CodingPlan“玩不起”，玩GPT5.5去了！</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge ">20</span></div>
+<div class="news-body">
+<a href="https://juejin.cn/post/7631498231743103017" target="_blank" class="news-title-link">为什么 Github Copilot 要收集你数据，也是 AI 订阅以前便宜的原因</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge ">21</span></div>
+<div class="news-body">
+<a href="https://juejin.cn/post/7631419063718772742" target="_blank" class="news-title-link">把 Claude Design 做成 Skill，你的网站也能拥有顶级视觉体验</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge ">25</span></div>
+<div class="news-body">
+<a href="https://juejin.cn/post/7631050859780931594" target="_blank" class="news-title-link">Claude Code 安装并配置 Coding Plan</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge ">30</span></div>
+<div class="news-body">
+<a href="https://juejin.cn/post/7631394312985329715" target="_blank" class="news-title-link">ChatGPT Image2，作图太太太太太强了！</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 </div>
@@ -525,7 +517,7 @@ comments: false
 <div class="news-body">
 <a href="https://sspai.com/post/108768" target="_blank" class="news-title-link">AI 输出中的 ** 是怎么来的：谈中文 Markdown 强调标记的渲染问题</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
@@ -533,7 +525,7 @@ comments: false
 <div class="news-body">
 <a href="https://sspai.com/post/108453" target="_blank" class="news-title-link">Claude Code+HA 自动化实战：给宠物龟请个「电子保姆」</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
@@ -541,7 +533,7 @@ comments: false
 <div class="news-body">
 <a href="https://sspai.com/post/108300" target="_blank" class="news-title-link">AI 时代，我关于教育的思考</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
@@ -549,7 +541,7 @@ comments: false
 <div class="news-body">
 <a href="https://sspai.com/post/108118" target="_blank" class="news-title-link">时隔 5 年的大更新：AirPods Max 2 首发体验</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
@@ -557,7 +549,7 @@ comments: false
 <div class="news-body">
 <a href="https://sspai.com/post/108103" target="_blank" class="news-title-link">买前必看：千问 AI 眼镜 G1 自费长测</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
@@ -565,7 +557,7 @@ comments: false
 <div class="news-body">
 <a href="https://sspai.com/post/107743" target="_blank" class="news-title-link">iOS 26.4 值得关注的新特性</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
@@ -573,7 +565,7 @@ comments: false
 <div class="news-body">
 <a href="https://sspai.com/post/107600" target="_blank" class="news-title-link">浅谈人工智能时代的用户体验：Agent Experience 导论</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
@@ -581,7 +573,7 @@ comments: false
 <div class="news-body">
 <a href="https://sspai.com/post/106878" target="_blank" class="news-title-link">年度征文｜效率杂谈：告别纸笔拓荒，怎么用 AI 来辅助学习？</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
@@ -589,7 +581,7 @@ comments: false
 <div class="news-body">
 <a href="https://sspai.com/post/107031" target="_blank" class="news-title-link">最便宜的 Mac 笔记本：MacBook Neo 首发体验</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
@@ -597,7 +589,7 @@ comments: false
 <div class="news-body">
 <a href="https://sspai.com/post/106923" target="_blank" class="news-title-link">杀死你的不是它：聊聊我们的 AI 的焦虑</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
@@ -605,7 +597,7 @@ comments: false
 <div class="news-body">
 <a href="https://sspai.com/post/106477" target="_blank" class="news-title-link">从采集到回顾，我用 AI 搭建了一套个人信息处理系统</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 </div>
@@ -613,48 +605,56 @@ comments: false
 <div class="source-section">
 <div class="source-header">
 <span class="source-name">Github</span>
-<span class="source-count">5 条</span>
+<span class="source-count">6 条</span>
 </div>
 <div class="news-list">
 
 <div class="news-item">
-<div class="news-rank"><span class="rank-badge top">2</span></div>
-<div class="news-body">
-<a href="https://github.com/zilliztech/claude-context" target="_blank" class="news-title-link">zilliztech / claude-context</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge ">6</span></div>
-<div class="news-body">
-<a href="https://github.com/Anil-matcha/Open-Generative-AI" target="_blank" class="news-title-link">Anil-matcha / Open-Generative-AI</a>
-<span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
-</div>
-</div>
-<div class="news-item">
-<div class="news-rank"><span class="rank-badge ">7</span></div>
+<div class="news-rank"><span class="rank-badge top">1</span></div>
 <div class="news-body">
 <a href="https://github.com/Alishahryar1/free-claude-code" target="_blank" class="news-title-link">Alishahryar1 / free-claude-code</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge top">3</span></div>
+<div class="news-body">
+<a href="https://github.com/google/osv-scanner" target="_blank" class="news-title-link">google / osv-scanner</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge high">5</span></div>
+<div class="news-body">
+<a href="https://github.com/zilliztech/claude-context" target="_blank" class="news-title-link">zilliztech / claude-context</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">9</span></div>
 <div class="news-body">
-<a href="https://github.com/microsoft/ai-agents-for-beginners" target="_blank" class="news-title-link">microsoft / ai-agents-for-beginners</a>
+<a href="https://github.com/Anil-matcha/Open-Generative-AI" target="_blank" class="news-title-link">Anil-matcha / Open-Generative-AI</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge ">11</span></div>
+<div class="news-body">
+<a href="https://github.com/deepseek-ai/DeepEP" target="_blank" class="news-title-link">deepseek-ai / DeepEP</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
 <div class="news-rank"><span class="rank-badge ">12</span></div>
 <div class="news-body">
-<a href="https://github.com/microsoft/onnxruntime" target="_blank" class="news-title-link">microsoft / onnxruntime</a>
+<a href="https://github.com/microsoft/typescript-go" target="_blank" class="news-title-link">microsoft / typescript-go</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 </div>
@@ -662,24 +662,57 @@ comments: false
 <div class="source-section">
 <div class="source-header">
 <span class="source-name">腾讯新闻</span>
-<span class="source-count">2 条</span>
+<span class="source-count">4 条</span>
 </div>
 <div class="news-list">
 
 <div class="news-item">
-<div class="news-rank"><span class="rank-badge high">4</span></div>
+<div class="news-rank"><span class="rank-badge top">2</span></div>
 <div class="news-body">
-<a href="https://view.inews.qq.com/a/20260423A05GRP00" target="_blank" class="news-title-link">美国退还关税，中方回应</a>
+<a href="https://view.inews.qq.com/a/20260424A05QOC00" target="_blank" class="news-title-link">军事专家解读海军最新宣传片《向大洋》：中国海军或将迎核航母</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 <div class="news-item">
-<div class="news-rank"><span class="rank-badge ">13</span></div>
+<div class="news-rank"><span class="rank-badge high">4</span></div>
 <div class="news-body">
-<a href="https://view.inews.qq.com/a/20260423A06EXH00" target="_blank" class="news-title-link">姚顺雨腾讯首秀来了！三个月重建混元新模型，实测到底什么水平</a>
+<a href="https://view.inews.qq.com/a/20260424A097TL00" target="_blank" class="news-title-link">两届奥运冠军、中国羽毛球协会主席张军“失联”</a>
 <span class="new-badge">NEW</span>
-<span class="news-time">09:17</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge ">8</span></div>
+<div class="news-body">
+<a href="https://view.inews.qq.com/a/20260424A06UFO00" target="_blank" class="news-title-link">中国证监会：允许合格境外投资者参与国债期货交易</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge ">12</span></div>
+<div class="news-body">
+<a href="https://view.inews.qq.com/a/20260424A06VXE00" target="_blank" class="news-title-link">“月球经济”蓄势待发？太空企业掌门：10年内人类将在月球生活和工作</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
+</div>
+</div>
+</div>
+</div>
+<div class="source-section">
+<div class="source-header">
+<span class="source-name">Freebuf</span>
+<span class="source-count">1 条</span>
+</div>
+<div class="news-list">
+
+<div class="news-item">
+<div class="news-rank"><span class="rank-badge top">1</span></div>
+<div class="news-body">
+<a href="https://www.freebuf.com/articles/478625.html" target="_blank" class="news-title-link">铸刃止戈，以智御危！腾讯安全沙龙 &amp;amp; 智能渗透挑战赛北京站重磅开启</a>
+<span class="new-badge">NEW</span>
+<span class="news-time">09:10</span>
 </div>
 </div>
 </div>
